@@ -10,8 +10,8 @@ import ApiPromise from '@plugnet/api/promise/Api';
 import testKeyring from '@plugnet/keyring/testing';
 import { WsProvider } from '@plugnet/rpc-provider';
 
-// const WS = 'ws://127.0.0.1:9944/';
-const WS = 'wss://poc3-rpc.polkadot.io/';
+const WS = 'ws://127.0.0.1:9944/';
+// const WS = 'wss://poc3-rpc.polkadot.io/';
 
 describe.skip('derive e2e', () => {
   let api: ApiPromise;
