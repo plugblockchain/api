@@ -5,9 +5,9 @@
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ApiInterface$Rx } from '@plugnet/api/types';
-import { decodeAddress } from '@plugnet/keyring';
 import { AccountId, AccountIndex, Address } from '@plugnet/types';
 import { isU8a } from '@plugnet/util';
+import { decodeAddress } from '@plugnet/util-crypto';
 
 import { idToIndex } from './idToIndex';
 import { indexToId } from './indexToId';
