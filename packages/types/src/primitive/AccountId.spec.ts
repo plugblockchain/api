@@ -2,7 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { setAddressPrefix } from '@plugnet/keyring';
+import { setAddressPrefix } from '@plugnet/util-crypto';
+
 import U8a from '../codec/U8a';
 import Vector from '../codec/Vector';
 import jsonVec from '../json/AccountIdVec.001.json';

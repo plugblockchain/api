@@ -4,8 +4,8 @@
 
 import { AnyString, AnyU8a } from '../types';
 
-import { decodeAddress, encodeAddress } from '@plugnet/keyring';
 import { hexToU8a, isHex, isString, isU8a, u8aToU8a } from '@plugnet/util';
+import { decodeAddress, encodeAddress } from '@plugnet/util-crypto';
 
 import U8aFixed from '../codec/U8aFixed';
 
