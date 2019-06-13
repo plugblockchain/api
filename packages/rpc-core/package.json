@@ -13,9 +13,6 @@
   ],
   "contributors": [],
   "license": "Apache-2.0",
-  "engines": {
-    "node": ">=6.4"
-  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
@@ -33,6 +30,6 @@
     "@plugnet/jsonrpc": "^0.80.100",
     "@plugnet/rpc-provider": "^0.80.100",
     "@plugnet/types": "^0.80.100",
-    "@plugnet/util": "^0.92.100"
+    "@plugnet/util": "^0.93.100"
   }
 }

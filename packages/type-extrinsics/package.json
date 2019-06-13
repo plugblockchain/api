@@ -12,6 +12,6 @@
   "dependencies": {
     "@babel/runtime": "^7.4.5",
     "@plugnet/types": "^0.80.100",
-    "@plugnet/util": "^0.92.100"
+    "@plugnet/util": "^0.93.100"
   }
 }

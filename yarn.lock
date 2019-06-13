@@ -1731,6 +1731,17 @@
     "@types/bs58" "^4.0.0"
     bs58 "^4.0.1"
 
+"@plugnet/keyring@^0.93.100":
+  version "0.93.100"
+  resolved "https://registry.yarnpkg.com/@plugnet/keyring/-/keyring-0.93.100.tgz#e5b9bda47c1a2e44fe83676d689cc61a278723b7"
+  integrity sha512-zffuXrwITE8XxOE1i5WB054zWhkgXfcEtAFc5ngCQflHBRXHvgylC8P7X6MBJQTnHZDb+ob0vQSXolR/GG4xPA==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@plugnet/util" "^0.93.100"
+    "@plugnet/util-crypto" "^0.93.100"
+    "@types/bs58" "^4.0.0"
+    bs58 "^4.0.1"
+
 "@plugnet/util-crypto@^0.92.100":
   version "0.92.100"
   resolved "https://registry.yarnpkg.com/@plugnet/util-crypto/-/util-crypto-0.92.100.tgz#6147cb968875c202091fae0aee5020966cc4dfd5"
@@ -1750,10 +1761,43 @@
     tweetnacl "^1.0.1"
     xxhashjs "^0.2.2"
 
+"@plugnet/util-crypto@^0.93.100":
+  version "0.93.100"
+  resolved "https://registry.yarnpkg.com/@plugnet/util-crypto/-/util-crypto-0.93.100.tgz#69c2a58e0d57b46f3702e8a3da91accbb12d78d0"
+  integrity sha512-zp1fOeqkv9IyTk6WnavyWP2urNzdHeiQQO5ceXvgpM202NrQIVCpkwIgD7zZAE0suJPyeMEsw36wqpN/lxQEuw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@plugnet/util" "^0.93.100"
+    "@plugnet/wasm-crypto" "^0.11.100"
+    "@types/bip39" "^2.4.2"
+    "@types/pbkdf2" "^3.0.0"
+    "@types/secp256k1" "^3.5.0"
+    "@types/xxhashjs" "^0.2.1"
+    bip39 "^2.5.0"
+    blakejs "^1.1.0"
+    js-sha3 "^0.8.0"
+    secp256k1 "^3.7.0"
+    tweetnacl "^1.0.1"
+    xxhashjs "^0.2.2"
+
 "@plugnet/util@^0.92.100":
   version "0.92.100"
   resolved "https://registry.yarnpkg.com/@plugnet/util/-/util-0.92.100.tgz#29a0681f3d143b3b317dbbf0ee3b29e71a29dae2"
   integrity sha512-1NM5LQmQ5wYOoBoDHEB52ZTsg1XaPBQjCgdAXoVZwv3pusjD5mDnZ5dvCABC+tITGIuonKXmEPr0nQghyT/iag==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    "@types/bn.js" "^4.11.5"
+    "@types/deasync" "^0.1.0"
+    bn.js "^4.11.8"
+    camelcase "^5.3.1"
+    chalk "^2.4.2"
+    ip-regex "^4.1.0"
+    moment "^2.24.0"
+
+"@plugnet/util@^0.93.100":
+  version "0.93.100"
+  resolved "https://registry.yarnpkg.com/@plugnet/util/-/util-0.93.100.tgz#6f0c2f04739b8a8453014b74b450f80b1a4109b2"
+  integrity sha512-6CvRuF4ij9fV/xF2Nu4KoZ2bVUBe7YmjbySjum3o8AVVVt9ebWs0ngsRYCVG/cDJYO0XUEHRgibQKtKfAahkJw==
   dependencies:
     "@babel/runtime" "^7.4.5"
     "@types/bn.js" "^4.11.5"

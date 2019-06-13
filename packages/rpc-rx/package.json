@@ -35,6 +35,6 @@
     "rxjs": "^6.5.2"
   },
   "devDependencies": {
-    "@plugnet/keyring": "^0.92.100"
+    "@plugnet/keyring": "^0.93.100"
   }
 }
