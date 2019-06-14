@@ -7,6 +7,8 @@
     {
       "@plugnet/api": ["packages/api/src"],
       "@plugnet/api/*": ["packages/api/src/*"],
+      "@plugnet/api-contract": ["packages/api-contract/src"],
+      "@plugnet/api-contract/*": ["packages/api-contract/src/*"],
       "@plugnet/api-derive": ["packages/api-derive/src"],
       "@plugnet/api-derive/*": ["packages/api-derive/src/*"],
       "@plugnet/rpc-core": ["packages/rpc-core/src"],
