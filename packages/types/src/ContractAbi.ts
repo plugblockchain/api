@@ -4,7 +4,7 @@
 
 import { CodecArg, Constructor } from './types';
 
-import { assert, isNumber, isNull, isString, isUndefined, stringCamelCase, isObject } from '@plugnet//util';
+import { assert, isNumber, isNull, isString, isUndefined, stringCamelCase, isObject } from '@plugnet/util';
 
 import Compact from './codec/Compact';
 import { createClass } from './codec/createType';
