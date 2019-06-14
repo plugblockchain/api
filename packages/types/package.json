@@ -1,6 +1,6 @@
 {
   "name": "@plugnet/types",
-  "version": "0.80.100",
+  "version": "0.81.0",
   "description": "Implementation of the Parity codec",
   "main": "index.js",
   "keywords": [

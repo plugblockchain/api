@@ -1720,17 +1720,6 @@
     typescript "^3.5.1"
     vuepress "^1.0.0-beta.2"
 
-"@plugnet/keyring@^0.92.100":
-  version "0.92.100"
-  resolved "https://registry.yarnpkg.com/@plugnet/keyring/-/keyring-0.92.100.tgz#af73f0414869b064de9027eef63a0a5738f71bca"
-  integrity sha512-kVEAWs8XbyKrEshTeEeL+6UeAjLKxo4BekqlQhbKM76o6DT6BUJ2GDrPemU/vKLq8RyZKzRXBOV0vuRS76PTHQ==
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-    "@plugnet/util" "^0.92.100"
-    "@plugnet/util-crypto" "^0.92.100"
-    "@types/bs58" "^4.0.0"
-    bs58 "^4.0.1"
-
 "@plugnet/keyring@^0.93.100":
   version "0.93.100"
   resolved "https://registry.yarnpkg.com/@plugnet/keyring/-/keyring-0.93.100.tgz#e5b9bda47c1a2e44fe83676d689cc61a278723b7"
@@ -1741,25 +1730,6 @@
     "@plugnet/util-crypto" "^0.93.100"
     "@types/bs58" "^4.0.0"
     bs58 "^4.0.1"
-
-"@plugnet/util-crypto@^0.92.100":
-  version "0.92.100"
-  resolved "https://registry.yarnpkg.com/@plugnet/util-crypto/-/util-crypto-0.92.100.tgz#6147cb968875c202091fae0aee5020966cc4dfd5"
-  integrity sha512-ID4c5xL/rjU515/+JtSzYEzKJtuwNe8+OKVaOIkk/NtBQo7xC6s9eNZAOJ/9fib2eIVDFzcYls6/ohJfmPA85Q==
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-    "@plugnet/util" "^0.92.100"
-    "@plugnet/wasm-crypto" "^0.11.100"
-    "@types/bip39" "^2.4.2"
-    "@types/pbkdf2" "^3.0.0"
-    "@types/secp256k1" "^3.5.0"
-    "@types/xxhashjs" "^0.2.1"
-    bip39 "^2.5.0"
-    blakejs "^1.1.0"
-    js-sha3 "^0.8.0"
-    secp256k1 "^3.7.0"
-    tweetnacl "^1.0.1"
-    xxhashjs "^0.2.2"
 
 "@plugnet/util-crypto@^0.93.100":
   version "0.93.100"
@@ -1779,20 +1749,6 @@
     secp256k1 "^3.7.0"
     tweetnacl "^1.0.1"
     xxhashjs "^0.2.2"
-
-"@plugnet/util@^0.92.100":
-  version "0.92.100"
-  resolved "https://registry.yarnpkg.com/@plugnet/util/-/util-0.92.100.tgz#29a0681f3d143b3b317dbbf0ee3b29e71a29dae2"
-  integrity sha512-1NM5LQmQ5wYOoBoDHEB52ZTsg1XaPBQjCgdAXoVZwv3pusjD5mDnZ5dvCABC+tITGIuonKXmEPr0nQghyT/iag==
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-    "@types/bn.js" "^4.11.5"
-    "@types/deasync" "^0.1.0"
-    bn.js "^4.11.8"
-    camelcase "^5.3.1"
-    chalk "^2.4.2"
-    ip-regex "^4.1.0"
-    moment "^2.24.0"
 
 "@plugnet/util@^0.93.100":
   version "0.93.100"
