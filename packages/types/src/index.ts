@@ -9,5 +9,6 @@ import { assertSingletonPackage } from '@plugnet/util';
 
 assertSingletonPackage('@plugnet/types');
 
+export { default as ContractAbi } from './ContractAbi';
 export * from './codec';
 export * from './index.types';
