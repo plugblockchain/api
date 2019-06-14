@@ -6,7 +6,7 @@ import Keyring from '@plugnet/keyring';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { randomAsHex } from '@plugnet/util-crypto';
 import WsProvider from '@plugnet/rpc-provider/ws';
-import { EventRecord, ExtrinsicEra, Hash, Index, SignedBlock } from '@plugnet/types';
+import { EventRecord, ExtrinsicEra, Hash, Header, Index, SignedBlock } from '@plugnet/types';
 
 import SingleAccountSigner from '../util/SingleAccountSigner';
 import { SubmittableResult } from './../../src';
@@ -190,7 +190,7 @@ describe.skip('Promise e2e transactions', () => {
     const ex = api.tx.balances.transfer(keyring.eve.address, 12345);
 
     return (
-      api.rpc.chain.subscribeNewHead(async (header) => {
+      api.rpc.chain.subscribeNewHead(async (header: Header) => {
         if (header.blockNumber.toNumber() === eraDeath - 1) {
           const hash = await ex.signAndSend(keyring.alice, { blockHash: eraHash, era: exERA, nonce } as any);
 
