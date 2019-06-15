@@ -30,6 +30,6 @@
     "@plugnet/jsonrpc": "^0.81.100",
     "@plugnet/rpc-provider": "^0.81.100",
     "@plugnet/types": "^0.81.100",
-    "@plugnet/util": "^0.93.100"
+    "@plugnet/util": "^0.94.100"
   }
 }
