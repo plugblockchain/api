@@ -8,9 +8,9 @@ cache:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin::$(yarn global bin):$(yarn global dir):$PATH
-  - yarn global add @plugnet/dev
+  - yarn add @plugnet/dev@latest -W
 script:
-  - plugnet-dev-travis-build
+  - yarn plugnet-dev-travis-build
 branches:
   only:
   - master
