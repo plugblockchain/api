@@ -11,8 +11,6 @@ _The following sections contain Storage methods are part of the default Substrat
 
 - **[councilMotions](#councilMotions)**
 
-- **[councilVoting](#councilVoting)**
-
 - **[democracy](#democracy)**
 
 - **[grandpaFinality](#grandpaFinality)**
@@ -47,9 +45,6 @@ ___
 
 ▸ **freeBalance**(`AccountId`): `Balance`
 - **summary**:   The 'free' balance of a given account.   This is the only balance that matters in terms of most operations on tokens. It  alone is used to determine the balance when in the contract execution environment. When this  balance falls below the value of `ExistentialDeposit`, then the 'current account' is  deleted: specifically `FreeBalance`. Further, the `OnFreeBalanceZero` callback  is invoked, giving a chance to external modules to clean up data associated with  the deleted account.   `system::AccountNonce` is also deleted if `ReservedBalance` is also zero (it also gets  collapsed to zero if it ever becomes less than `ExistentialDeposit`.
-
-▸ **freeBalance.multi**(`[AccountId1, ...AccountIdn]`): `[Balance1, ...Balancen]`
-- **summary**:   You may subscribe to balance changes for multiple adddresses. This is done using the `api.query.balances.freeBalance.multi([addresses...], (balances) => {...}`
 
 ▸ **locks**(`AccountId`): `Vec<BalanceLock>`
 - **summary**:   Any liquidity locks on some account balances.
@@ -158,13 +153,14 @@ ___
 ▸ **activeCouncil**(): `Vec<(AccountId,BlockNumber)>`
 - **summary**:   The current council. When there's a vote going on, this should still be used for executive  matters. The block number (second element in the tuple) is the block that their position is  active until (calculated by the sum of the block number when the council member was elected  and their term duration).
 
-▸ **approvalsOf**(`AccountId`): `Vec<bool>`
-- **summary**:   A list of votes for each voter, respecting the last cleared vote index that this voter was  last active at.
+▸ **approvalsOf**(`(AccountId,SetIndex)`): `Vec<ApprovalFlag>`
+- **summary**:   A list of votes for each voter. The votes are stored as numeric values and parsed in a bit-wise manner.   In order to get a human-readable representation (`Vec<bool>`), use [`all_approvals_of`].   Furthermore, each vector of scalars is chunked with the cap of `APPROVAL_SET_SIZE`.
 
 ▸ **candidacyBond**(): `BalanceOf`
 - **summary**:   How much should be locked up in order to submit one's candidacy.
 
 ▸ **candidateCount**(): `u32`
+- **summary**:   Current number of active candidates
 
 ▸ **candidates**(): `Vec<AccountId>`
 - **summary**:   The present candidate list.
@@ -172,20 +168,23 @@ ___
 ▸ **carryCount**(): `u32`
 - **summary**:   How many runners-up should have their approvals persist until the next vote.
 
+▸ **decayRatio**(): `u32`
+- **summary**:   Decay factor of weight when being accumulated. It should typically be set to  __at least__ `council_size -1` to keep the council secure.  When set to `N`, it indicates `(1/N)^t` of staked is decayed at weight increment step `t`.  0 will result in no weight being added at all (normal approval voting).
+
 ▸ **desiredSeats**(): `u32`
 - **summary**:   Number of accounts that should be sitting on the council.
 
 ▸ **inactiveGracePeriod**(): `VoteIndex`
-- **summary**:   How many vote indexes need to go by after a target voter's last vote before they can be reaped if their  approvals are moot.
-
-▸ **lastActiveOf**(`AccountId`): `Option<VoteIndex>`
-- **summary**:   The last cleared vote index that this voter was last active at.
+- **summary**:   How many vote indices need to go by after a target voter's last vote before they can be reaped if their  approvals are moot.
 
 ▸ **leaderboard**(): `Option<Vec<(BalanceOf,AccountId)>>`
-- **summary**:   Get the leaderboard if we;re in the presentation phase.
+- **summary**:   Get the leaderboard if we're in the presentation phase. The first element is the weight of each entry;  It may be the direct summed approval stakes, or a weighted version of it.
 
 ▸ **nextFinalize**(): `Option<(BlockNumber,u32,Vec<AccountId>)>`
 - **summary**:   The accounts holding the seats that will become free on the next tally.
+
+▸ **nextVoterSet**(): `SetIndex`
+- **summary**:   the next free set to store a voter in. This will keep growing.
 
 ▸ **presentationDuration**(): `BlockNumber`
 - **summary**:   How long to give each top candidate to present themselves after the vote ends.
@@ -196,20 +195,26 @@ ___
 ▸ **registerInfoOf**(`AccountId`): `Option<(VoteIndex,u32)>`
 - **summary**:   The vote index and list slot that the candidate `who` was registered or `None` if they are not  currently registered.
 
-▸ **snapshotedStakes**(): `Vec<BalanceOf>`
-- **summary**:   The stakes as they were at the point that the vote ended.
-
 ▸ **termDuration**(): `BlockNumber`
 - **summary**:   How long each position is active for.
 
 ▸ **voteCount**(): `VoteIndex`
-- **summary**:   The total number of votes that have happened or are in progress.
+- **summary**:   The total number of vote rounds that have happened or are in progress.
 
-▸ **voters**(): `Vec<AccountId>`
-- **summary**:   The present voter list.
+▸ **voterCount**(): `SetIndex`
+- **summary**:   Current number of Voters.
+
+▸ **voterInfoOf**(`AccountId`): `Option<VoterInfo>`
+- **summary**:   Basic information about a voter.
+
+▸ **voters**(`SetIndex`): `Vec<Option<AccountId>>`
+- **summary**:   The present voter list (chunked and capped at [`VOTER_SET_SIZE`]).
 
 ▸ **votingBond**(): `BalanceOf`
 - **summary**:   How much should be locked up in order to be able to submit votes.
+
+▸ **votingFee**(): `BalanceOf`
+- **summary**:   The amount of fee paid upon each vote submission, unless if they submit a _hole_ index and replace it.
 
 ▸ **votingPeriod**(): `BlockNumber`
 - **summary**:   How often (in blocks) to check for new votes.
@@ -226,39 +231,23 @@ ___
 - **summary**:   Actual proposal for a given hash, if it's current.
 
 ▸ **proposals**(): `Vec<Hash>`
-- **summary**:   The (hashes of) the active proposals.
+- **summary**:   The hashes of the active proposals.
 
-▸ **voting**(`Hash`): `Option<(ProposalIndex,u32,Vec<AccountId>,Vec<AccountId>)>`
-- **summary**:   Votes for a given proposal: (required_yes_votes, yes_voters, no_voters).
-
-___
-
-
-### councilVoting
-
-▸ **cooloffPeriod**(): `BlockNumber`
-
-▸ **councilVoteOf**(`(Hash,AccountId)`): `Option<bool>`
-
-▸ **enactDelayPeriod**(): `BlockNumber`
-- **summary**:   Number of blocks by which to delay enactment of successful, non-unanimous-council-instigated referendum proposals.
-
-▸ **proposalOf**(`Hash`): `Option<Proposal>`
-
-▸ **proposals**(): `Vec<(BlockNumber,Hash)>`
-
-▸ **proposalVoters**(`Hash`): `Vec<AccountId>`
-
-▸ **vetoedProposal**(`Hash`): `Option<(BlockNumber,Vec<AccountId>)>`
-
-▸ **votingPeriod**(): `BlockNumber`
+▸ **voting**(`Hash`): `Option<Votes>`
+- **summary**:   Votes on a given proposal, if it is ongoing.
 
 ___
 
 
 ### democracy
 
-▸ **delegations**(`AccountId`): `((AccountId,LockPeriods), Linkage<AccountId>)`
+▸ **blacklist**(`Hash`): `Option<(BlockNumber,Vec<AccountId>)>`
+- **summary**:   A record of who vetoed what. Maps proposal hash to a possible existent block number  (until when it may not be resubmitted) and who vetoed it.
+
+▸ **cancellations**(`Hash`): `bool`
+- **summary**:   Record of all proposals that have been subject to emergency cancellation.
+
+▸ **delegations**(`AccountId`): `((AccountId,Conviction), Linkage<AccountId>)`
 - **summary**:   Get the account (and lock periods) to which another account is delegating vote.
 
 ▸ **depositOf**(`PropIndex`): `Option<(BalanceOf,Vec<AccountId>)>`
@@ -267,23 +256,17 @@ ___
 ▸ **dispatchQueue**(`BlockNumber`): `Vec<Option<(Proposal,ReferendumIndex)>>`
 - **summary**:   Queue of successful referenda to be dispatched.
 
-▸ **launchPeriod**(): `BlockNumber`
-- **summary**:   How often (in blocks) new public referenda are launched.
+▸ **lastTabledWasExternal**(): `bool`
+- **summary**:   True if the last referendum tabled was submitted externally. False if it was a public  proposal.
 
-▸ **maxLockPeriods**(): `LockPeriods`
-- **summary**:   The maximum number of additional lock periods a voter may offer to strengthen their vote. Multiples of `PublicDelay`.
-
-▸ **minimumDeposit**(): `BalanceOf`
-- **summary**:   The minimum amount to be used as a deposit for a public referendum proposal.
+▸ **nextExternal**(): `Option<(Proposal,VoteThreshold)>`
+- **summary**:   The referendum to be tabled whenever it would be valid to table an external proposal.  This happens when a referendum needs to be tabled and one of two conditions are met:  - `LastTabledWasExternal` is `false`; or  - `PublicProps` is empty.
 
 ▸ **nextTally**(): `ReferendumIndex`
 - **summary**:   The next referendum index that should be tallied.
 
 ▸ **proxy**(`AccountId`): `Option<AccountId>`
-- **summary**:   Who is able to vote for whom. Value is the fund-holding account, key is the vote-transaction-sending account.
-
-▸ **publicDelay**(): `BlockNumber`
-- **summary**:   The delay before enactment for all public referenda.
+- **summary**:   Who is able to vote for whom. Value is the fund-holding account, key is the  vote-transaction-sending account.
 
 ▸ **publicPropCount**(): `PropIndex`
 - **summary**:   The number of (public) proposals that have been made so far.
@@ -298,13 +281,10 @@ ___
 - **summary**:   Information concerning any given referendum.
 
 ▸ **voteOf**(`(ReferendumIndex,AccountId)`): `Vote`
-- **summary**:   Get the vote in a given referendum of a particular voter. The result is meaningful only if `voters_for` includes the  voter when called with the referendum (you'll get the default `Vote` value otherwise). If you don't want to check  `voters_for`, then you can also check for simple existence with `VoteOf::exists` first.
+- **summary**:   Get the vote in a given referendum of a particular voter. The result is meaningful only  if `voters_for` includes the voter when called with the referendum (you'll get the  default `Vote` value otherwise). If you don't want to check `voters_for`, then you can  also check for simple existence with `VoteOf::exists` first.
 
 ▸ **votersFor**(`ReferendumIndex`): `Vec<AccountId>`
 - **summary**:   Get the voters for the current proposal.
-
-▸ **votingPeriod**(): `BlockNumber`
-- **summary**:   How often (in blocks) to check for new votes.
 
 ___
 
@@ -516,7 +496,7 @@ ___
 - **summary**:   Total funds available to this module for spending.
 
 ▸ **proposalBond**(): `Permill`
-- **summary**:   Proportion of funds that should be bonded in order to place a proposal. An accepted  proposal gets these back. A rejected proposal doesn't.
+- **summary**:   Fraction of a proposal's value that should be bonded in order to place the proposal.  An accepted proposal gets these back. A rejected proposal does not.
 
 ▸ **proposalBondMinimum**(): `BalanceOf`
 - **summary**:   Minimum amount of funds that should be placed in a deposit for making a proposal.
