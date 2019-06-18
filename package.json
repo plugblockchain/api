@@ -2,7 +2,6 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": ">=10.13.0",
     "yarn": "^1.10.1"
   },
   "workspaces": [
@@ -10,7 +9,7 @@
   ],
   "resolutions": {
     "babel-core": "^7.0.0-bridge.0",
-    "typescript": "~3.4.5"
+    "typescript": "^3.5.2"
   },
   "scripts": {
     "build": "plugnet-dev-build-ts && yarn run build:methodsdoc",
@@ -24,11 +23,11 @@
     "test:watch": "jest --coverage --watch"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/register": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
-    "@plugnet/dev": "^0.30.4",
-    "@polkadot/ts": "^0.1.56",
+    "@babel/runtime": "^7.4.5",
+    "@plugnet/dev": "^0.30.8",
+    "@polkadot/ts": "^0.1.60",
     "gh-pages": "^2.0.1"
   }
 }
