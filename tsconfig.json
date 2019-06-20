@@ -15,8 +15,6 @@
       "@plugnet/rpc-core/*": ["packages/rpc-core/src/*"],
       "@plugnet/rpc-provider": ["packages/rpc-provider/src"],
       "@plugnet/rpc-provider/*": ["packages/rpc-provider/src/*"],
-      "@plugnet/rpc-rx": ["packages/rpc-rx/src"],
-      "@plugnet/rpc-rx/*": ["packages/rpc-rx/src/*"],
       "@plugnet/extrinsics": ["packages/type-extrinsics/src"],
       "@plugnet/extrinsics/*": ["packages/type-extrinsics/src/*"],
       "@plugnet/jsonrpc": ["packages/type-jsonrpc/src"],
