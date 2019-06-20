@@ -16,7 +16,6 @@ The API is split up into a number of internal packages -
 - [@plugnet/api-derive](packages/api-derive/) Derived results that are injected into the API, allowing for combinations of various query results (only used internally and exposed on the Api instances via `api.derive.*`)
 - [@plugnet/rpc-core](packages/rpc-core/) Wrapper around all [JSON-RPC methods](https://www.poweredbyplug.com/) exposed by a Plugnet network client
 - [@plugnet/rpc-provider](packages/rpc-provider/) Providers for connecting to nodes, including WebSockets and Http
-- [@plugnet/rpc-rx](packages/rpc-rx/) A RxJs Observable wrapper around [@plugnet/rpc-provider](packages/rpc-provider)
 
 Type definitions for interfaces as exposed by Plugnet & Substrate clients -
 

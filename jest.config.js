@@ -17,7 +17,6 @@ module.exports = Object.assign({}, config, {
     '<rootDir>/packages/api-contract/build',
     '<rootDir>/packages/rpc-core/build',
     '<rootDir>/packages/rpc-provider/build',
-    '<rootDir>/packages/rpc-rx/build',
     '<rootDir>/packages/type-extrinsics/build',
     '<rootDir>/packages/type-jsonrpc/build',
     '<rootDir>/packages/type-storage/build/',
