@@ -5,7 +5,7 @@
 import { ModuleStorage, Storage } from '../types';
 
 import Metadata from '@plugnet/types/Metadata';
-import { stringLowerFirst } from '@plugnet/util';
+import { stringCamelCase, stringLowerFirst } from '@plugnet/util';
 
 import createFunction from './createFunction';
 import { storage } from './storage';
@@ -26,7 +26,7 @@ export default function fromMetadata (metadata: Metadata): Storage {
     const { name, prefix } = moduleMetadata;
 
     // For access, we change the index names, i.e. Balances.FreeBalance -> balances.freeBalance
-    result[stringLowerFirst(name.toString())] = moduleMetadata.storage.unwrap().reduce((newModule, storageFnMeta) => {
+    result[stringCamelCase(name.toString())] = moduleMetadata.storage.unwrap().reduce((newModule, storageFnMeta) => {
       newModule[stringLowerFirst(storageFnMeta.name.toString())] = createFunction(prefix, storageFnMeta.name, storageFnMeta);
 
       return newModule;
