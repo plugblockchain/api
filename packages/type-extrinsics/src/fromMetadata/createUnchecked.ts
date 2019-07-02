@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { FunctionMetadata } from '@plugnet/types/Metadata/v5/Calls';
+import { FunctionMetadata } from '@plugnet/types/Metadata/v6/Calls';
 import { MethodFunction } from '@plugnet/types/primitive/Method';
 import { Method } from '@plugnet/types';
 import { assert, stringCamelCase } from '@plugnet/util';

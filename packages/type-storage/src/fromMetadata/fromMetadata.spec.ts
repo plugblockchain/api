@@ -4,7 +4,7 @@
 
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { Metadata } from '@plugnet/types';
-import json from '@plugnet/types/Metadata/v5/static';
+import json from '@plugnet/types/Metadata/v6/static';
 import { u8aToHex } from '@plugnet/util';
 
 import fromMetadata from './';

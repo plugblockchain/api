@@ -20,6 +20,7 @@
     "clean": "plugnet-dev-clean-build",
     "postinstall": "plugnet-dev-yarn-only",
     "test": "jest --coverage",
+    "test:skip-e2e": "jest --coverage --testPathIgnorePatterns e2e",
     "test:watch": "jest --coverage --watch"
   },
   "devDependencies": {
