@@ -4,7 +4,7 @@
 
 import { Codec, Constructor } from '../types';
 
-import { assert, isU8a, u8aConcat, compactToU8a } from '@polkadot/util';
+import { assert, isU8a, u8aConcat, compactToU8a } from '@plugnet/util';
 
 import AbstractArray from './AbstractArray';
 import Vector from './Vector';

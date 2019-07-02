@@ -1,8 +1,8 @@
 // @ts-check
 // Import the API, Keyring and some utility functions
-const { ApiPromise } = require('@polkadot/api');
-const { Keyring } = require('@polkadot/keyring');
-const { ExtrinsicEra } = require('@polkadot/types/type');
+const { ApiPromise } = require('@plugnet/api');
+const { Keyring } = require('@plugnet/keyring');
+const { ExtrinsicEra } = require('@plugnet/types/type');
 
 const BOB = '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty';
 
@@ -36,7 +36,7 @@ async function main () {
   // Create an extrinsic, transferring 12345 units to Bob
   const transfer = api.tx.balances.transfer(BOB, 12345);
 
-  // Sign and send the transaction using our account with a nonce and the length of blocks the transaction is valid for 
+  // Sign and send the transaction using our account with a nonce and the length of blocks the transaction is valid for
   const hash = await transfer.signAndSend(alice, { blockHash: eraHash, era: exERA, nonce });
 
   console.log('Transfer sent with hash', hash.toHex());
