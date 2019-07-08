@@ -8,7 +8,7 @@ import { ApiPromise } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive';
 import testKeyring from '@plugnet/keyring/testingPairs';
 import { IExtrinsic, IMethod } from '@plugnet/types/types';
-import { Header } from '@plugnet/types';
+import { Header, Nonce } from '@plugnet/types';
 
 import { SubmittableResult } from './';
 
@@ -44,14 +44,33 @@ export default async function test () {
   console.log('transfer as Method', transfer as IMethod);
   console.log('transfer as Extrinsic', transfer as IExtrinsic);
 
-  const hash = await transfer.signAndSend(keyring.alice);
-  console.log('hash:', hash.toHex());
+  // simple "return the hash" variant
+  console.log('hash:', (await transfer.signAndSend(keyring.alice)).toHex());
 
+  // passing options, but waiting for hash
+  const nonce = await api.query.system.accountNonce<Nonce>(keyring.alice.address);
+
+  (await api.tx.balances
+    .transfer(keyring.bob.address, 12345)
+    .signAndSend(keyring.alice, { nonce })
+  ).toHex();
+
+  // just with the callback
   const unsub = await api.tx.balances
     .transfer(keyring.bob.address, 12345)
     .signAndSend(keyring.alice, ({ status }: SubmittableResult) => {
       console.log('transfer status:', status.type);
 
       unsub();
+    });
+
+  // with options and the callback
+  const nonce2 = await api.query.system.accountNonce<Nonce>(keyring.alice.address);
+  const unsub2 = await api.tx.balances
+    .transfer(keyring.bob.address, 12345)
+    .signAndSend(keyring.alice, { nonce: nonce2 }, ({ status }: SubmittableResult) => {
+      console.log('transfer status:', status.type);
+
+      unsub2();
     });
 }
