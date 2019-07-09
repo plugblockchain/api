@@ -27,7 +27,7 @@
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/rpc-provider#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.0",
-    "@plugnet/storage": "^0.81.100",
+    "@plugnet/api-metadata": "^0.81.100",
     "@plugnet/util": "^0.94.100",
     "@plugnet/util-crypto": "^0.94.100",
     "@types/nock": "^10.0.3",

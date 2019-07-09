@@ -7,11 +7,11 @@ import path from 'path';
 
 import { SubmittableResult } from '@plugnet/api';
 import ApiPromise from '@plugnet/api/promise/Api';
+import storage from '@plugnet/api-metadata/storage/static';
 import { Abi } from '@plugnet/api-contract';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { KeyringPair } from '@plugnet/keyring/types';
 import WsProvider from '@plugnet/rpc-provider/ws';
-import storage from '@plugnet/storage/static';
 import { Balance, Bytes, Hash, Metadata, Moment, StorageData, StorageKey } from '@plugnet/types';
 
 import Rpc from '../../src';
