@@ -14,14 +14,13 @@ The API is split up into a number of internal packages -
 
 - [@plugnet/api](packages/api/) The API library, providing both Promise and RxJS Observable-based interfaces. This is the main user-facing entry point.
 - [@plugnet/api-derive](packages/api-derive/) Derived results that are injected into the API, allowing for combinations of various query results (only used internally and exposed on the Api instances via `api.derive.*`)
+- [@plugnet/api-metadata](packages/api-metadata/) Base extrinsic, storage and constant injectors for injection
 - [@plugnet/rpc-core](packages/rpc-core/) Wrapper around all [JSON-RPC methods](https://www.poweredbyplug.com/) exposed by a Plugnet network client
 - [@plugnet/rpc-provider](packages/rpc-provider/) Providers for connecting to nodes, including WebSockets and Http
 
 Type definitions for interfaces as exposed by Plugnet & Substrate clients -
 
-- [@plugnet/extrinsics](packages/type-extrinsics/) Base extrinsic definitions & codecs
 - [@plugnet/jsonrpc](packages/type-jsonrpc/) Definitions for JSONRPC endpoints
-- [@plugnet/storage](packages/type-storage/) Definitions for storage entries
 - [@plugnet/types](packages/types/) Codecs for all Plugnet primitives
 
 ## development

@@ -9,7 +9,7 @@ import BN from 'bn.js';
 import EventEmitter from 'eventemitter3';
 import interfaces from '@plugnet/jsonrpc';
 import testKeyring from '@plugnet/keyring/testing';
-import storage from '@plugnet/storage/static';
+import storage from '@plugnet/api-metadata/storage/static';
 import { Codec } from '@plugnet/types/types';
 import rpcMetadataV6 from '@plugnet/types/Metadata/v6/static';
 import { Header, RuntimeVersion } from '@plugnet/types';

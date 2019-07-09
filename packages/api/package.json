@@ -28,10 +28,9 @@
   "dependencies": {
     "@babel/runtime": "^7.5.0",
     "@plugnet/api-derive": "^0.81.100",
-    "@plugnet/extrinsics": "^0.81.100",
+    "@plugnet/api-metadata": "^0.81.100",
     "@plugnet/rpc-core": "^0.81.100",
     "@plugnet/rpc-provider": "^0.81.100",
-    "@plugnet/storage": "^0.81.100",
     "@plugnet/types": "^0.81.100",
     "@plugnet/util-crypto": "^0.94.100"
   },

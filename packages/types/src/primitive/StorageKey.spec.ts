@@ -2,8 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import fromMetadata from '@plugnet/api-metadata/storage/fromMetadata';
 import { hexToU8a } from '@plugnet/util';
-import fromMetadata from '@plugnet/storage/fromMetadata';
 import rpcDataV3 from '@plugnet/types/Metadata/v3/static';
 import rpcDataV4 from '@plugnet/types/Metadata/v4/static';
 import rpcDataV5 from '@plugnet/types/Metadata/v5/static';

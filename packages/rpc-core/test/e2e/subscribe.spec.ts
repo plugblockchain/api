@@ -4,7 +4,7 @@
 
 import { StorageChangeSet } from '@plugnet/types';
 import WsProvider from '@plugnet/rpc-provider/ws';
-import storage from '@plugnet/storage/static';
+import storage from '@plugnet/api-metadata/storage/static';
 
 import Rpc from '../../src';
 

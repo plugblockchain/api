@@ -4,8 +4,8 @@
 
 import BN from 'bn.js';
 
-import fromMetadata from '@plugnet/storage/fromMetadata';
-import { Storage } from '@plugnet/storage/types';
+import fromMetadata from '@plugnet/api-metadata/storage/fromMetadata';
+import { Storage } from '@plugnet/api-metadata/storage/types';
 import Metadata from '@plugnet/types/Metadata';
 import rpcMetadataV3 from '@plugnet/types/Metadata/v3/static';
 import rpcMetadataV4 from '@plugnet/types/Metadata/v4/static';

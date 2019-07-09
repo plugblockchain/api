@@ -4,6 +4,7 @@
 
 import { Observable } from 'rxjs';
 import { DeriveCustom } from '@plugnet/api-derive';
+import { Constants } from '@plugnet/api-metadata/consts/fromMetadata/types';
 import { ProviderInterface, ProviderInterface$Emitted } from '@plugnet/rpc-provider/types';
 import { Hash, RuntimeVersion, u64 as U64 } from '@plugnet/types';
 import { AnyFunction, Callback, Codec, CodecArg, IExtrinsic, RegistryTypes, SignatureOptions } from '@plugnet/types/types';
@@ -194,6 +195,7 @@ export interface ApiOptions {
 
 // A smaller interface of ApiRx, used in derive and in SubmittableExtrinsic
 export interface ApiInterface$Rx {
+  consts: Constants;
   genesisHash: Hash;
   hasSubscriptions: boolean;
   runtimeMetadata: Metadata;

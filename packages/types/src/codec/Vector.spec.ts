@@ -4,7 +4,7 @@
 
 import { Codec, CodecTo } from '../types';
 
-import extrinsics from '@plugnet/extrinsics/static';
+import extrinsics from '@plugnet/api-metadata/extrinsics/static';
 
 import AccountId from '../primitive/AccountId';
 import Method from '../primitive/Method';
