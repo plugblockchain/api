@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/api#readme",
   "dependencies": {
-    "@babel/runtime": "^7.5.0",
+    "@babel/runtime": "^7.5.2",
     "@plugnet/api-derive": "^0.81.100",
     "@plugnet/api-metadata": "^0.81.100",
     "@plugnet/rpc-core": "^0.81.100",
