@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/type-metadata#readme",
   "dependencies": {
-    "@babel/runtime": "^7.5.0",
+    "@babel/runtime": "^7.5.2",
     "@plugnet/types": "^0.81.100",
     "@plugnet/util": "^0.94.100",
     "@plugnet/util-crypto": "^0.94.100"
