@@ -22,7 +22,7 @@ import { Storage } from '@plugnet/api-metadata/storage/types';
 import storageFromMeta from '@plugnet/api-metadata/storage/fromMetadata';
 import RpcCore from '@plugnet/rpc-core';
 import { WsProvider } from '@plugnet/rpc-provider';
-import { Event, getTypeRegistry, Hash, Metadata, Method, RuntimeVersion, Null, VectorAny } from '@plugnet/types';
+import { Event, getTypeRegistry, Hash, Metadata, Method, RuntimeVersion, Null } from '@plugnet/types';
 import Linkage, { LinkageResult } from '@plugnet/types/codec/Linkage';
 import { MethodFunction, ModulesWithMethods } from '@plugnet/types/primitive/Method';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
@@ -556,9 +556,7 @@ export default abstract class ApiBase<ApiType> {
             : [arg.creator] as any
         );
 
-        return this._rpcCore.state
-          .subscribeStorage(mapped)
-          .pipe(map((results) => new VectorAny(...results)));
+        return this._rpcCore.state.subscribeStorage(mapped);
       });
   }
 
@@ -649,7 +647,6 @@ export default abstract class ApiBase<ApiType> {
       (args: Array<CodecArg[] | CodecArg>) =>
         this._rpcCore.state
           .subscribeStorage(args.map((arg: CodecArg[] | CodecArg) => [creator, arg]))
-          .pipe(map((results) => new VectorAny(...results)))
     );
 
     decorated.size = decorateMethod(
