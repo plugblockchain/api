@@ -19,8 +19,8 @@
     "lint": "tslint --project . && tsc --noEmit --pretty",
     "clean": "plugnet-dev-clean-build",
     "postinstall": "plugnet-dev-yarn-only",
-    "test": "jest --coverage",
-    "test:skip-e2e": "jest --coverage --testPathIgnorePatterns e2e",
+    "test": "jest --coverage --testPathIgnorePatterns e2e",
+    "test:all": "jest",
     "test:watch": "jest --coverage --watch"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.5.2",
     "@plugnet/dev": "^0.30.8",
-    "@polkadot/ts": "^0.1.60",
+    "@polkadot/ts": "^0.1.61",
     "gh-pages": "^2.0.1"
   }
 }
