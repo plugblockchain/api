@@ -4,7 +4,7 @@
 
 import { catchError, distinctUntilChanged, publishReplay, refCount } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { logger } from '@polkadot/util';
+import { logger } from '@plugnet/util';
 
 const l = logger('drr');
 
