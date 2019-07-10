@@ -25,6 +25,7 @@ import { WsProvider } from '@plugnet/rpc-provider';
 import { Event, getTypeRegistry, Hash, Metadata, Method, RuntimeVersion, Null } from '@plugnet/types';
 import Linkage, { LinkageResult } from '@plugnet/types/codec/Linkage';
 import { MethodFunction, ModulesWithMethods } from '@plugnet/types/primitive/Method';
+import * as srmlTypes from '@plugnet/types/srml/definitions';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 import { assert, compactStripLength, isFunction, isObject, isUndefined, logger, u8aToHex } from '@plugnet/util';
 import { cryptoWaitReady } from '@plugnet/util-crypto';
@@ -123,6 +124,12 @@ export default abstract class ApiBase<ApiType> {
 
     // we only re-register the types (global) if this is not a cloned instance
     if (!options.source) {
+      // first register the definitions we have, i.e. those where there are no type classes
+      Object.values(srmlTypes).forEach(({ types }) =>
+        this.registerTypes(types)
+      );
+
+      // next register all the user types
       this.registerTypes(options.types);
     }
 
