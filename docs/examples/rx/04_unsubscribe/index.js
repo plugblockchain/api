@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // Import the API
 const { ApiRx } = require('@plugnet/api');
 const { switchMap } = require('rxjs/operators');

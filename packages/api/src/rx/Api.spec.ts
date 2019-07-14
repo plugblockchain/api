@@ -6,8 +6,8 @@ import { isObservable } from '@plugnet/util';
 
 import ApiRx from './Api';
 
-describe('ApiRx', () => {
-  it('has isConnected', () => {
+describe('ApiRx', (): void => {
+  it('has isConnected', (): void => {
     const api = new ApiRx();
 
     expect(
