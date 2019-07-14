@@ -4,7 +4,7 @@
 
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { ApiInterface$Rx } from '@plugnet/api/types';
+import { ApiInterfaceRx } from '@plugnet/api/types';
 import { BlockNumber, Header } from '@plugnet/types';
 
 import { drr } from '../util/drr';
@@ -21,12 +21,12 @@ import { drr } from '../util/drr';
  * });
  * ```
  */
-export function bestNumber (api: ApiInterface$Rx) {
+export function bestNumber (api: ApiInterfaceRx): () => Observable<BlockNumber> {
   return (): Observable<BlockNumber> =>
     (api.rpc.chain.subscribeNewHead() as Observable<Header>)
       .pipe(
-        filter((header: Header) => header && !!header.blockNumber),
-        map(({ blockNumber }: Header) => blockNumber),
+        filter((header: Header): boolean => !!header && !!header.blockNumber),
+        map(({ blockNumber }: Header): BlockNumber => blockNumber),
         drr()
       );
 }

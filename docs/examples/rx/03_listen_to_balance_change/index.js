@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // Import the API and operators from RxJs
 const { ApiRx } = require('@plugnet/api');
 const { pairwise, startWith } = require('rxjs/operators');

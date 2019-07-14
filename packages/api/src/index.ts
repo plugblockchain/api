@@ -2,10 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-export { WsProvider } from '@plugnet/rpc-provider';
 import { assertSingletonPackage } from '@plugnet/util';
 
 assertSingletonPackage('@plugnet/api');
+
+export { WsProvider } from '@plugnet/rpc-provider';
 
 export { default as ApiPromise } from './promise';
 export { default as ApiRx } from './rx';
