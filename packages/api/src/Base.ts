@@ -16,7 +16,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import decorateDerive from '@plugnet/api-derive';
 import constantsFromMeta from '@plugnet/api-metadata/consts/fromMetadata';
-import { Constants } from '@plugnet/api-metadata/consts/fromMetadata/types';
+import { Constants } from '@plugnet/api-metadata/consts/types';
 import extrinsicsFromMeta from '@plugnet/api-metadata/extrinsics/fromMetadata';
 import { Storage } from '@plugnet/api-metadata/storage/types';
 import storageFromMeta from '@plugnet/api-metadata/storage/fromMetadata';
