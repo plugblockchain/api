@@ -6,7 +6,7 @@ import storage from '@plugnet/api-metadata/storage/static';
 import WsProvider from '@plugnet/rpc-provider/ws';
 import { BlockNumber, Index, SignedBlock, StorageChangeSet } from '@plugnet/types';
 
-import Rpc from '../../src';
+import Rpc from '@plugnet/rpc-core';
 
 const randomAccount = '5HTqyWJHAVUieZnpb1V8gK4T1E4mnhkrUVSSzWBQd6kYgsVJ';
 

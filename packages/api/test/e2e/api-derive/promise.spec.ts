@@ -7,13 +7,12 @@ import testingPairs from '@plugnet/keyring/testingPairs';
 import { WsProvider } from '@plugnet/rpc-provider';
 import { RewardDestination } from '@plugnet/types';
 
-import { HeaderExtended } from '../../src/type';
-import { DerivedBalances, DerivedFees, DerivedSessionInfo, DerivedStaking } from '../../src/types';
-import { SubmittableResult } from '../../../api/src';
+import { SubmittableResult } from '@plugnet/api';
+import { HeaderExtended } from '@plugnet/api-derive/type';
+import { DerivedBalances, DerivedFees, DerivedSessionInfo, DerivedStaking } from '@plugnet/api-derive/types';
 
 const ALICE_STASH = testingPairs().alice_stash.address;
 const WS = 'ws://127.0.0.1:9944/';
-// const WS = 'wss://poc3-rpc.polkadot.io/';
 
 describe.skip('derive e2e', (): void => {
   let api: ApiPromise;
