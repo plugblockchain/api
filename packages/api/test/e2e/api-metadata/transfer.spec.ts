@@ -8,7 +8,7 @@ import Rpc from '@plugnet/rpc-core';
 import WsProvider from '@plugnet/rpc-provider/ws';
 import testingPairs from '@plugnet/keyring/testingPairs';
 
-import extrinsics from './../../static';
+import extrinsics from '@plugnet/api-metadata/extrinsics/static';
 
 const keyring = testingPairs({ type: 'ed25519' });
 

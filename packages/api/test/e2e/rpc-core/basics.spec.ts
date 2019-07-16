@@ -5,7 +5,7 @@
 import { ChainProperties, PendingExtrinsics } from '@plugnet/types';
 import WsProvider from '@plugnet/rpc-provider/ws';
 
-import Rpc from '../../src';
+import Rpc from '@plugnet/rpc-core';
 
 describe.skip('e2e basics', (): void => {
   let rpc: Rpc;
