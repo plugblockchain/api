@@ -5,17 +5,15 @@ _The following sections contain Extrinsics methods are part of the default Subst
 
 - **[consensus](#consensus)**
 
-- **[contract](#contract)**
-
-- **[council](#council)**
-
-- **[councilMotions](#councilMotions)**
+- **[contracts](#contracts)**
 
 - **[democracy](#democracy)**
 
-- **[](#)**
+- **[elections](#elections)**
 
-- **[grandpaFinality](#grandpaFinality)**
+- **[finalityTracker](#finalityTracker)**
+
+- **[grandpa](#grandpa)**
 
 - **[session](#session)**
 
@@ -68,7 +66,7 @@ ___
 ___
 
 
-### contract
+### contracts
 
 ▸ **call**(dest: `Address`, value: `Compact<BalanceOf>`, gas_limit: `Compact<Gas>`, data: `Bytes`)
 - **summary**:   Makes a call to an account, optionally transferring some balance.   * If the account is a smart-contract account, the associated code will be  executed and any value will be transferred.  * If the account is a regular account, any value will be transferred.  * If no account exists and the call value is not less than `existential_deposit`,  a regular account will be created and any value will be transferred.
@@ -193,7 +191,42 @@ ___
 ___
 
 
-### 
+### elections
+
+▸ **presentWinner**(candidate: `Address`, total: `Compact<BalanceOf>`, index: `Compact<VoteIndex>`)
+- **summary**:   Claim that `signed` is one of the top Self::carry_count() + current_vote().1 candidates.  Only works if the `block_number >= current_vote().0` and `< current_vote().0 + presentation_duration()`  `signed` should have at least   # <weight>  - O(voters) compute.  - One DB change.  # </weight>
+
+▸ **proxySetApprovals**(votes: `Vec<bool>`, index: `Compact<VoteIndex>`, hint: `SetIndex`)
+- **summary**:   Set candidate approvals from a proxy. Approval slots stay valid as long as candidates in those slots  are registered.   # <weight>  - Same as `set_approvals` with one additional storage read.  # </weight>
+
+▸ **reapInactiveVoter**(reporter_index: `Compact<u32>`, who: `Address`, who_index: `Compact<u32>`, assumed_vote_index: `Compact<VoteIndex>`)
+- **summary**:   Remove a voter. For it not to be a bond-consuming no-op, all approved candidate indices  must now be either unregistered or registered to a candidate that registered the slot after  the voter gave their last approval set.   Both indices must be provided as explained in [`voter_at`] function.   May be called by anyone. Returns the voter deposit to `signed`.   # <weight>  - O(1).  - Two fewer DB entries, one DB change.  # </weight>
+
+▸ **removeMember**(who: `Address`)
+- **summary**:   Remove a particular member from the set. This is effective immediately.   Note: A tally should happen instantly (if not already in a presentation  period) to fill the seat if removal means that the desired members are not met.
+
+▸ **retractVoter**(index: `Compact<u32>`)
+- **summary**:   Remove a voter. All votes are cancelled and the voter deposit is returned.   The index must be provided as explained in [`voter_at`] function.   Also removes the lock on the balance of the voter. See [`do_set_approvals()`].   # <weight>  - O(1).  - Two fewer DB entries, one DB change.  # </weight>
+
+▸ **setApprovals**(votes: `Vec<bool>`, index: `Compact<VoteIndex>`, hint: `SetIndex`)
+- **summary**:   Set candidate approvals. Approval slots stay valid as long as candidates in those slots  are registered.   Locks the total balance of caller indefinitely.  Only [`retract_voter`] or [`reap_inactive_voter`] can unlock the balance.   `hint` argument is interpreted differently based on:  - if `origin` is setting approvals for the first time: The index will be checked  for being a valid _hole_ in the voter list.    - if the hint is correctly pointing to a hole, no fee is deducted from `origin`.    - Otherwise, the call will succeed but the index is ignored and simply a push to the last chunk    with free space happens. If the new push causes a new chunk to be created, a fee indicated by    [`VotingFee`] is deducted.  - if `origin` is already a voter: the index __must__ be valid and point to the correct  position of the `origin` in the current voters list.   Note that any trailing `false` votes in `votes` is ignored; In approval voting, not voting for a candidate  and voting false, are equal.   # <weight>  - O(1).  - Two extra DB entries, one DB change.  - Argument `votes` is limited in length to number of candidates.  # </weight>
+
+▸ **setDesiredSeats**(count: `Compact<u32>`)
+- **summary**:   Set the desired member count; if lower than the current count, then seats will not be up  election when they expire. If more, then a new vote will be started if one is not  already in progress.
+
+▸ **setPresentationDuration**(count: `Compact<BlockNumber>`)
+- **summary**:   Set the presentation duration. If there is currently a vote being presented for, will  invoke `finalize_vote`.
+
+▸ **setTermDuration**(count: `Compact<BlockNumber>`)
+- **summary**:   Set the presentation duration. If there is current a vote being presented for, will  invoke `finalize_vote`.
+
+▸ **submitCandidacy**(slot: `Compact<u32>`)
+- **summary**:   Submit oneself for candidacy.   Account must have enough transferrable funds in it to pay the bond.   NOTE: if `origin` has already assigned approvals via [`set_approvals`],  it will NOT have any usable funds to pass candidacy bond and must first retract.  Note that setting approvals will lock the entire balance of the voter until  retraction or being reported.   # <weight>  - Independent of input.  - Three DB changes.  # </weight>
+
+___
+
+
+### finalityTracker
 
 ▸ **finalHint**(hint: `Compact<BlockNumber>`)
 - **summary**:   Hint that the author of this block thinks the best finalized  block is the given number.
@@ -201,7 +234,7 @@ ___
 ___
 
 
-### grandpaFinality
+### grandpa
 
 ▸ **reportMisbehavior**(_report: `Bytes`)
 - **summary**:   Report some misbehavior.
