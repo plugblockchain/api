@@ -5,7 +5,7 @@
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { DeriveCustom } from '@plugnet/api-derive';
-import { Constants } from '@plugnet/api-metadata/consts/fromMetadata/types';
+import { Constants } from '@plugnet/api-metadata/consts/types';
 import { ProviderInterface, ProviderInterfaceEmitted } from '@plugnet/rpc-provider/types';
 import { Hash, RuntimeVersion, u64 as U64 } from '@plugnet/types';
 import { AnyFunction, Callback, Codec, CodecArg, IExtrinsic, RegistryTypes, SignatureOptions } from '@plugnet/types/types';

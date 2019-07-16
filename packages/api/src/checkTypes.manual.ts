@@ -6,6 +6,7 @@
 
 import { ApiPromise } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive';
+import { ConstantCodec } from '@plugnet/api-metadata/consts/types';
 import testKeyring from '@plugnet/keyring/testingPairs';
 import { IExtrinsic, IMethod } from '@plugnet/types/types';
 import { Header, Nonce } from '@plugnet/types';
@@ -52,7 +53,7 @@ export default async function test (): Promise<void> {
   // constants has actual value & metadata
   console.log(
     api.consts.balances.creationFee.toHex(),
-    api.consts.balances.creationFee.meta.documentation.map((s): string => s.toString()).join('')
+    (api.consts.balances.creationFee as ConstantCodec).meta.documentation.map((s): string => s.toString()).join('')
   );
 
   const transfer = api.tx.balances.transfer(keyring.bob.address, 12345);
