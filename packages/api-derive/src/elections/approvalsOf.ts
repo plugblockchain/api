@@ -1,8 +1,8 @@
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
-import { AccountId, Vector, SetIndex, ApprovalFlag } from '@polkadot/types';
+import { ApiInterfaceRx } from '@plugnet/api/types';
+import { AccountId, Vector, SetIndex, ApprovalFlag } from '@plugnet/types';
 import { drr } from '../util/drr';
 
 export function approvalFlagToBool (flags: Vector<ApprovalFlag>): boolean[] {

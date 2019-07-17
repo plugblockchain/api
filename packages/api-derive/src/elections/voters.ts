@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
-import { AccountId, Vector, Option, SetIndex } from '@polkadot/types';
+import { ApiInterfaceRx } from '@plugnet/api/types';
+import { AccountId, Vector, Option, SetIndex } from '@plugnet/types';
 import { drr } from '../util/drr';
 
 export function voters (api: ApiInterfaceRx): () => Observable<Option<AccountId>[]> {
