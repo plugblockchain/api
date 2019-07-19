@@ -9,7 +9,7 @@ import { RewardDestination } from '@plugnet/types';
 
 import { SubmittableResult } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive/type';
-import { DerivedBalances, DerivedFees, DerivedSessionInfo, DerivedStaking } from '@plugnet/api-derive/types';
+import { DerivedBalances, DerivedElectionsInfo, DerivedFees, DerivedSessionInfo, DerivedStaking } from '@plugnet/api-derive/types';
 
 const ALICE_STASH = testingPairs().alice_stash.address;
 const WS = 'ws://127.0.0.1:9944/';
@@ -52,6 +52,14 @@ describe.skip('derive e2e', (): void => {
   it('retrieves the fees (api.queryMulti)', (done): Promise<() => void> => {
     return api.derive.balances.fees((fees: DerivedFees): void => {
       console.error('fees', JSON.stringify(fees));
+
+      done();
+    });
+  });
+
+  it('retrieves elections info', (done): Promise<() => void> => {
+    return api.derive.elections.info((info: DerivedElectionsInfo): void => {
+      console.error('fees', JSON.stringify(info));
 
       done();
     });

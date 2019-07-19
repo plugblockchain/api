@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import BN from 'bn.js';
-import { Vector, ApprovalFlag } from '@polkadot/types';
+import { Vector, ApprovalFlag } from '@plugnet/types';
 
 export function approvalFlagToBool (flags: Vector<ApprovalFlag>): boolean[] {
   const bools: boolean[] = [];
