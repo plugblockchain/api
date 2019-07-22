@@ -4,8 +4,11 @@
 
 import { Metadata, BlockNumber } from '@plugnet/types';
 import json from '@plugnet/types/Metadata/v6/static';
+import { injectDefinitions } from '@plugnet/types/Metadata/util/testUtil';
 
 import fromMetadata from '../fromMetadata';
+
+injectDefinitions();
 
 // Use the pre-generated metadata
 const metadata = new Metadata(json);
