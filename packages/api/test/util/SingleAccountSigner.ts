@@ -2,14 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Signer, SignerPayload, SignerResult } from '@plugnet/api/types';
 import { KeyringPair } from '@plugnet/keyring/types';
-import { SignatureOptions } from '@plugnet/types/types';
 
-import { Extrinsic } from '@plugnet/types';
+import { SignaturePayload } from '@plugnet/types';
 
 let id = 0;
 
-export default class SingleAccountSigner {
+export default class SingleAccountSigner implements Signer {
   private keyringPair: KeyringPair;
 
   private signDelay: number;
@@ -19,16 +19,32 @@ export default class SingleAccountSigner {
     this.signDelay = signDelay;
   }
 
-  public async sign (extrinsic: Extrinsic, address: string, options: SignatureOptions): Promise<number> {
-    if (!this.keyringPair || String(address) !== this.keyringPair.address) {
+  // @deprecated Kept here until we have it removed completely
+  // public async sign (extrinsic: IExtrinsic, address: string, options: SignatureOptions): Promise<number> {
+  //   if (!this.keyringPair || String(address) !== this.keyringPair.address) {
+  //     throw new Error('does not have the keyringPair');
+  //   }
+
+  //   return new Promise((resolve): void => {
+  //     setTimeout((): void => {
+  //       extrinsic.sign(this.keyringPair, options);
+
+  //       resolve(++id);
+  //     }, this.signDelay);
+  //   });
+  // }
+
+  public async signPayload (payload: SignerPayload): Promise<SignerResult> {
+    if (!this.keyringPair || payload.address !== this.keyringPair.address) {
       throw new Error('does not have the keyringPair');
     }
 
     return new Promise((resolve): void => {
       setTimeout((): void => {
-        extrinsic.sign(this.keyringPair, options);
+        const signed = new SignaturePayload(payload, { version: payload.version }).sign(this.keyringPair);
+        const result: SignerResult = { id: ++id, ...signed };
 
-        resolve(++id);
+        resolve(result);
       }, this.signDelay);
     });
   }
