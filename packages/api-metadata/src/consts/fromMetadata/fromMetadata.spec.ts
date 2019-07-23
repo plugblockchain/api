@@ -4,7 +4,7 @@
 
 import { Metadata, BlockNumber } from '@plugnet/types';
 import json from '@plugnet/types/Metadata/v6/static';
-import { injectDefinitions } from '@plugnet/types/Metadata/util/testUtil';
+import { injectDefinitions } from '@plugnet/types/srml';
 
 import fromMetadata from '../fromMetadata';
 
