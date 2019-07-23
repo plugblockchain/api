@@ -3,20 +3,13 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import extrinsicsFromMeta from '@plugnet/api-metadata/extrinsics/fromMetadata';
-import { getTypeRegistry } from '@plugnet/types';
-import * as srmlTypes from '@plugnet/types/srml/definitions';
+import { injectDefinitions } from '@plugnet/types/srml';
 
 import createType from '../../codec/createType';
 import Metadata from '../Metadata';
 import Method from '../../primitive/Method';
 import { MetadataInterface } from '../types';
 import { Codec } from '../../types';
-
-export function injectDefinitions (): void {
-  Object.values(srmlTypes).forEach(({ types }): void =>
-    getTypeRegistry().register(types)
-  );
-}
 
 /**
  * Given the static `rpcData` and the `latestSubstrate` JSON file, Metadata

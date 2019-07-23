@@ -8,7 +8,7 @@ import fromMetadata from '@plugnet/api-metadata/storage/fromMetadata';
 import { Storage } from '@plugnet/api-metadata/storage/types';
 import { Balance } from '@plugnet/types';
 import Metadata from '@plugnet/types/Metadata';
-import { injectDefinitions } from '@plugnet/types/Metadata/util/testUtil';
+import { injectDefinitions } from '@plugnet/types/srml';
 import rpcMetadataV3 from '@plugnet/types/Metadata/v3/static';
 import rpcMetadataV4 from '@plugnet/types/Metadata/v4/static';
 import rpcMetadataV5 from '@plugnet/types/Metadata/v5/static';

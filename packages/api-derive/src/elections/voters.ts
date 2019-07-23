@@ -2,9 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { SetIndex } from '@plugnet/types/srml/elections/types';
+
 import { ApiInterfaceRx } from '@plugnet/api/types';
 import { Observable } from 'rxjs';
-import { AccountId, Vector, SetIndex } from '@plugnet/types';
+import { AccountId, Vector } from '@plugnet/types';
 import { map } from 'rxjs/operators';
 import { drr } from '../util/drr';
 import { voterSets } from './voterSets';
