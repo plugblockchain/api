@@ -12,7 +12,7 @@ import interfaces from '@plugnet/jsonrpc';
 import testKeyring from '@plugnet/keyring/testing';
 import storage from '@plugnet/api-metadata/storage/static';
 import { Codec } from '@plugnet/types/types';
-import rpcMetadataV6 from '@plugnet/types/Metadata/v6/static';
+import rpcMetadataV7 from '@plugnet/types/Metadata/v7/static';
 import { Header, RuntimeVersion } from '@plugnet/types';
 import { bnToU8a, logger, u8aToHex } from '@plugnet/util';
 import { randomAsU8a } from '@plugnet/util-crypto';
@@ -55,7 +55,7 @@ export default class Mock implements ProviderInterface {
       );
     },
     system_chain: (): string => 'mockChain',
-    state_getMetadata: (): string => rpcMetadataV6,
+    state_getMetadata: (): string => rpcMetadataV7,
     system_name: (): string => 'mockClient',
     system_version: (): string => '9.8.7'
   };
