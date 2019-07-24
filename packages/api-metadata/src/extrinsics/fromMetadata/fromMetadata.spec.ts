@@ -3,13 +3,13 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Extrinsic, Metadata } from '@plugnet/types';
-import json from '@plugnet/types/Metadata/v6/static';
+import json from '@plugnet/types/Metadata/v7/static';
 
-import fromV6 from '.';
+import fromMetadata from '.';
 
 // Use the pre-generated metadata
 const metadata = new Metadata(json);
-const newExtrinsics = fromV6(metadata);
+const newExtrinsics = fromMetadata(metadata);
 
 describe('fromMetadata', (): void => {
   it('should throw if an incorrect number of args is supplied', (): void => {
