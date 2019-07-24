@@ -31,7 +31,6 @@
     "@plugnet/rpc-provider": "^0.81.100",
     "@plugnet/types": "^0.81.100",
     "@plugnet/util": "^0.94.100",
-    "memoizee": "^0.4.14",
     "rxjs": "^6.5.2"
   }
 }
