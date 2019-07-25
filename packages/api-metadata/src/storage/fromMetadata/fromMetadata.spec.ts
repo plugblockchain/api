@@ -5,11 +5,15 @@
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { Metadata } from '@plugnet/types';
 import json from '@plugnet/types/Metadata/v6/static';
+import { injectDefinitions } from '@plugnet/types/srml';
 import { u8aToHex } from '@plugnet/util';
 
 import fromMetadata from '../fromMetadata';
 
+injectDefinitions();
+
 const keyring = testingPairs({ type: 'ed25519' });
+
 // Use the pre-generated metadata
 const metadata = new Metadata(json);
 const storage = fromMetadata(metadata);

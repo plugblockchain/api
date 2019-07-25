@@ -5,7 +5,6 @@
 import ApiPromise from '@plugnet/api/promise/Api';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { WsProvider } from '@plugnet/rpc-provider';
-import { RewardDestination } from '@plugnet/types';
 
 import { SubmittableResult } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive/type';
@@ -185,7 +184,7 @@ describe.skip('derive e2e', (): void => {
 
         // start by setting the reqred to Staked, so we have a common starting point
         await api.tx.staking
-          .setPayee(new RewardDestination('Staked'))
+          .setPayee('Staked')
           .signAndSend(testingPairs().alice, ({ status }): void => {
             if (status.isFinalized) {
               console.error('setPayee(Staked) isFinalized');
@@ -208,7 +207,7 @@ describe.skip('derive e2e', (): void => {
         // Wait a bit, and change reward destination
         setTimeout(async (): Promise<void> => {
           await api.tx.staking
-            .setPayee(new RewardDestination('Stash'))
+            .setPayee('Stash')
             .signAndSend(testingPairs().alice, ({ status }): void => {
               if (status.isFinalized) {
                 console.error('setPayee(Stash) isFinalized');

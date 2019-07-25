@@ -17,7 +17,7 @@ ___
 
 _Authoring of network items_
 
-▸ **pendingExtrinsics**(): `PendingExtrinsics`
+▸ **pendingExtrinsics**(): `Vec<Extrinsic>`
 - **summary**: Returns all pending extrinsics, potentially grouped by sender
 
 ▸ **submitAndWatchExtrinsic**(extrinsic: `Extrinsic`): `ExtrinsicStatus`
@@ -66,6 +66,21 @@ _Query of state_
 
 ▸ **call**(method: `Text`, data: `Bytes`, block?: `Hash`): `Bytes`
 - **summary**: Perform a call to a builtin on the chain
+
+▸ **getChildKeys**(childStorageKey: `StorageKey`, prefix: `StorageKey`, block?: `Hash`): `Vec<StorageKey>`
+- **summary**: Retrieves the keys with prefix of a specific child storage
+
+▸ **getChildStorage**(childStorageKey: `StorageKey`, key: `StorageKey`, block?: `Hash`): `StorageData`
+- **summary**: Retrieves the child storage for a key
+
+▸ **getChildStorageHash**(childStorageKey: `StorageKey`, key: `StorageKey`, block?: `Hash`): `Hash`
+- **summary**: Retrieves the child storage hash
+
+▸ **getChildStorageSize**(childStorageKey: `StorageKey`, key: `StorageKey`, block?: `Hash`): `u64`
+- **summary**: Retrieves the child storage size
+
+▸ **getKeys**(prefix: `StorageKey`, block?: `Hash`): `Vec<StorageKey>`
+- **summary**: Retrieves the keys with a certain prefix
 
 ▸ **getMetadata**(block?: `Hash`): `Metadata`
 - **summary**: Returns the runtime metadata
