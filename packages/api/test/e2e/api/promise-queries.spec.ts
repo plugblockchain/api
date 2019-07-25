@@ -2,12 +2,12 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { SessionIndex } from '@plugnet/types/srml/session/types';
+import { Hash, SessionIndex } from '@plugnet/types/srml/types';
 
 import { HeaderExtended } from '@plugnet/api-derive';
 import WsProvider from '@plugnet/rpc-provider/ws';
 import { LinkageResult } from '@plugnet/types/codec/Linkage';
-import { EventRecord, Hash, Header, Option, Vector, createType } from '@plugnet/types';
+import { EventRecord, Header, Option, Vector, createType } from '@plugnet/types';
 
 import ApiPromise from '../../../src/promise';
 import describeE2E from '../../util/describeE2E';

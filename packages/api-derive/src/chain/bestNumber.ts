@@ -2,10 +2,12 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { BlockNumber } from '@plugnet/types/srml/types';
+
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@plugnet/api/types';
-import { BlockNumber, Header } from '@plugnet/types';
+import { Header } from '@plugnet/types';
 
 import { drr } from '../util/drr';
 

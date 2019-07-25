@@ -4,12 +4,14 @@
 
 // Simple non-runnable checks to test type definitions in the editor itself
 
+import { Index } from '@plugnet/types/srml/types';
+
 import { ApiPromise } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive';
 import { ConstantCodec } from '@plugnet/api-metadata/consts/types';
 import testKeyring from '@plugnet/keyring/testingPairs';
 import { IExtrinsic, IMethod } from '@plugnet/types/types';
-import { Header, Nonce } from '@plugnet/types';
+import { Header } from '@plugnet/types';
 
 import { SubmittableResult } from './';
 
@@ -65,7 +67,7 @@ export default async function test (): Promise<void> {
   console.log('hash:', (await transfer.signAndSend(keyring.alice)).toHex());
 
   // passing options, but waiting for hash
-  const nonce = await api.query.system.accountNonce<Nonce>(keyring.alice.address);
+  const nonce = await api.query.system.accountNonce<Index>(keyring.alice.address);
 
   (await api.tx.balances
     .transfer(keyring.bob.address, 12345)
@@ -82,7 +84,7 @@ export default async function test (): Promise<void> {
     });
 
   // with options and the callback
-  const nonce2 = await api.query.system.accountNonce<Nonce>(keyring.alice.address);
+  const nonce2 = await api.query.system.accountNonce<Index>(keyring.alice.address);
   const unsub2 = await api.tx.balances
     .transfer(keyring.bob.address, 12345)
     .signAndSend(keyring.alice, { nonce: nonce2 }, ({ status }: SubmittableResult): void => {
