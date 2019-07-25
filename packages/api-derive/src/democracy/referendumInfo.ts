@@ -2,11 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { ReferendumInfo } from '@plugnet/types/srml/democracy/types';
+
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@plugnet/api/types';
-import { Option, ReferendumInfo } from '@plugnet/types';
+import { Option } from '@plugnet/types';
 import { isNull } from '@plugnet/util';
 
 import { ReferendumInfoExtended } from '../type';

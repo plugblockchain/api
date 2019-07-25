@@ -2,8 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { ReferendumIndex, ReferendumInfo } from '@plugnet/types/srml/democracy/types';
+
 import BN from 'bn.js';
-import { ReferendumInfo, ReferendumIndex } from '@plugnet/types';
+import { ClassOf, createType } from '@plugnet/types';
 import { AnyJsonObject } from '@plugnet/types/types';
 
 /**
@@ -11,7 +13,7 @@ import { AnyJsonObject } from '@plugnet/types/types';
  * @description
  * A [[ReferendumInfo]] with an additional `index` field
  */
-export default class ReferendumInfoExtended extends ReferendumInfo {
+export default class ReferendumInfoExtended extends ClassOf<ReferendumInfo>('ReferendumInfo') {
   private _index: ReferendumIndex;
 
   public constructor (value: ReferendumInfo | ReferendumInfoExtended, index?: BN | number) {
@@ -19,7 +21,7 @@ export default class ReferendumInfoExtended extends ReferendumInfo {
 
     this._index = value instanceof ReferendumInfoExtended
       ? value.index
-      : new ReferendumIndex(index);
+      : createType<ReferendumIndex>('ReferendumIndex', index);
   }
 
   /**
