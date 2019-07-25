@@ -12,8 +12,9 @@ import interfaces from '@plugnet/jsonrpc';
 import testKeyring from '@plugnet/keyring/testing';
 import storage from '@plugnet/api-metadata/storage/static';
 import { Codec } from '@plugnet/types/types';
-import rpcMetadataV7 from '@plugnet/types/Metadata/v7/static';
-import { Header, RuntimeVersion } from '@plugnet/types';
+import rpcMetadata from '@plugnet/types/Metadata/static';
+import rpcSignedBlock from '@plugnet/types/json/SignedBlock.004.immortal.json';
+import { Header, RuntimeVersion, SignedBlock } from '@plugnet/types';
 import { bnToU8a, logger, u8aToHex } from '@plugnet/util';
 import { randomAsU8a } from '@plugnet/util-crypto';
 
@@ -47,6 +48,8 @@ export default class Mock implements ProviderInterface {
 
   private requests: Record<string, (...params: any[]) => string> = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    chain_getBlock: (hash: string): any => new SignedBlock(rpcSignedBlock.result).toJSON(),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     chain_getBlockHash: (blockNumber: number): string => '0x1234',
     chain_getRuntimeVersion: (): string => new RuntimeVersion().toHex(),
     state_getStorage: (storage: MockStateDb, params: any[]): string => {
@@ -55,7 +58,7 @@ export default class Mock implements ProviderInterface {
       );
     },
     system_chain: (): string => 'mockChain',
-    state_getMetadata: (): string => rpcMetadataV7,
+    state_getMetadata: (): string => rpcMetadata,
     system_name: (): string => 'mockClient',
     system_version: (): string => '9.8.7'
   };
