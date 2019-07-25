@@ -2,12 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Hash, Index } from '@plugnet/types/srml/types';
+
 import Keyring from '@plugnet/keyring';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import WsProvider from '@plugnet/rpc-provider/ws';
 import { u8aToHex } from '@plugnet/util';
 import { randomAsHex } from '@plugnet/util-crypto';
-import { EventRecord, ExtrinsicEra, Hash, Header, Index, SignedBlock } from '@plugnet/types';
+import { EventRecord, ExtrinsicEra, Header, SignedBlock } from '@plugnet/types';
 
 import { SubmittableResult } from '../../../src';
 import ApiPromise from '../../../src/promise';

@@ -2,6 +2,8 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Balance, Hash } from '@plugnet/types/srml/types';
+
 import fs from 'fs';
 import path from 'path';
 
@@ -12,7 +14,7 @@ import { Abi } from '@plugnet/api-contract';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { KeyringPair } from '@plugnet/keyring/types';
 import WsProvider from '@plugnet/rpc-provider/ws';
-import { Balance, Bytes, Hash, Metadata, Moment, StorageData, StorageKey } from '@plugnet/types';
+import { Bytes, Metadata, Moment, StorageData, StorageKey } from '@plugnet/types';
 
 import Rpc from '@plugnet/rpc-core';
 import flipperAbi from '../../../../api-contract/test/contracts/flipper.json';

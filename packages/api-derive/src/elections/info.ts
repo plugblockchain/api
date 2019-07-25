@@ -3,12 +3,13 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { SetIndex, VoteIndex } from '@plugnet/types/srml/elections/types';
+import { BlockNumber } from '@plugnet/types/srml/types';
 
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@plugnet/api/types';
-import { AccountId, BlockNumber } from '@plugnet/types';
+import { AccountId } from '@plugnet/types';
 
 import { DerivedElectionsInfo } from '../types';
 import { drr } from '../util/drr';

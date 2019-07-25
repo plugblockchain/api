@@ -2,10 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Index } from '@plugnet/types/srml/types';
+
 import { Observable } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 
-import { Index } from '@plugnet/types';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import WsProvider from '@plugnet/rpc-provider/ws';
 

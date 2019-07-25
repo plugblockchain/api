@@ -3,10 +3,11 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { SetIndex, VoteIndex } from '@plugnet/types/srml/elections/types';
-import { Exposure, RewardDestination, ValidatorPrefs } from '@plugnet/types/srml/staking/types';
+import { Balance, BlockNumber, Index } from '@plugnet/types/srml/runtime/types';
+import { Exposure, RewardDestination, StakingLedger, ValidatorPrefs } from '@plugnet/types/srml/staking/types';
 
 import BN from 'bn.js';
-import { AccountId, Balance, BlockNumber, Index, StakingLedger, Vote } from '@plugnet/types';
+import { AccountId, Vote } from '@plugnet/types';
 
 export interface DerivedBalances {
   accountId: AccountId;

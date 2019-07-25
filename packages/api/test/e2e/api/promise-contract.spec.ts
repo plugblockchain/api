@@ -2,13 +2,15 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Hash } from '@plugnet/types/srml/types';
+
 import fs from 'fs';
 import path from 'path';
 
 import { Abi } from '@plugnet/api-contract';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import WsProvider from '@plugnet/rpc-provider/ws';
-import { Address, Hash } from '@plugnet/types';
+import { Address } from '@plugnet/types';
 
 import { SubmittableResult } from '../../../src';
 import ApiPromise from '../../../src/promise';
