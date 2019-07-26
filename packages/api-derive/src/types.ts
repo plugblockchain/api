@@ -2,12 +2,9 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { SetIndex, VoteIndex } from '@plugnet/types/interfaces/elections';
-import { Balance, BlockNumber, Index } from '@plugnet/types/interfaces/runtime';
-import { Exposure, RewardDestination, StakingLedger, ValidatorPrefs } from '@plugnet/types/interfaces/staking';
+import { AccountId, Balance, BlockNumber, Exposure, Index, RewardDestination, SetIndex, StakingLedger, ValidatorPrefs, Vote, VoteIndex } from '@plugnet/types/interfaces';
 
 import BN from 'bn.js';
-import { AccountId, Vote } from '@plugnet/types';
 
 export interface DerivedBalances {
   accountId: AccountId;

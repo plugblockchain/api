@@ -2,11 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Header } from '@plugnet/types/interfaces';
+import { AccountId, Header } from '@plugnet/types/interfaces';
 
 import { AnyJsonObject } from '@plugnet/types/types';
 
-import { AccountId, u64, ClassOf } from '@plugnet/types';
+import { u64, ClassOf } from '@plugnet/types';
 
 /**
  * @name HeaderExtended

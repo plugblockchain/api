@@ -2,13 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { AccountId, AccountIndex, Address } from '@plugnet/types/interfaces';
+
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ApiInterfaceRx } from '@plugnet/api/types';
-import { AccountId, AccountIndex, Address } from '@plugnet/types';
 import { isU8a } from '@plugnet/util';
 import { decodeAddress } from '@plugnet/util-crypto';
-
+import { createType } from '@plugnet/types';
 import { idToIndex } from './idToIndex';
 import { indexToId } from './indexToId';
 import { drr } from '../util/drr';
@@ -37,7 +38,7 @@ export function idAndIndex (api: ApiInterfaceRx): (address?: Address | AccountId
         : decodeAddress((address || '').toString());
 
       if (decoded.length === 32) {
-        const accountId = new AccountId(decoded);
+        const accountId = createType('AccountId', decoded);
 
         return idToIndex(api)(accountId).pipe(
           startWith(undefined),
@@ -46,7 +47,7 @@ export function idAndIndex (api: ApiInterfaceRx): (address?: Address | AccountId
         );
       }
 
-      const accountIndex = new AccountIndex(decoded);
+      const accountIndex = createType('AccountIndex', decoded);
 
       return indexToId(api)(accountIndex).pipe(
         startWith(undefined),

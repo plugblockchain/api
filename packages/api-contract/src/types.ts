@@ -3,10 +3,10 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { SubmittableModuleExtrinsics } from '@plugnet/api/types';
+import { Address } from '@plugnet/types/interfaces';
 import { CodecArg } from '@plugnet/types/types';
 
 import { ApiPromise, ApiRx } from '@plugnet/api';
-import { Address } from '@plugnet/types';
 
 export type ApiObject<ApiType> = ApiType extends 'rxjs'
   ? ApiRx

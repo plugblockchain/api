@@ -23,7 +23,7 @@ import { Storage } from '@plugnet/api-metadata/storage/types';
 import storageFromMeta from '@plugnet/api-metadata/storage/fromMetadata';
 import RpcCore from '@plugnet/rpc-core';
 import { WsProvider } from '@plugnet/rpc-provider';
-import { Event, getTypeRegistry, Metadata, Method, Null, u64 } from '@plugnet/types';
+import { getTypeRegistry, GenericEvent, Metadata, Method, Null, u64 } from '@plugnet/types';
 import Linkage, { LinkageResult } from '@plugnet/types/codec/Linkage';
 import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@plugnet/types/primitive/Extrinsic/constants';
 import { MethodFunction, ModulesWithMethods } from '@plugnet/types/primitive/Method';
@@ -533,7 +533,7 @@ export default abstract class ApiBase<ApiType> {
 
     // only inject if we are not a clone (global init)
     if (!this._options.source) {
-      Event.injectMetadata(this.runtimeMetadata);
+      GenericEvent.injectMetadata(this.runtimeMetadata);
       Method.injectMethods(extrinsics);
 
       // detect the extrinsic version in-use based on the last block
