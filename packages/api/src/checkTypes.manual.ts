@@ -12,6 +12,7 @@ import { ConstantCodec } from '@plugnet/api-metadata/consts/types';
 import testKeyring from '@plugnet/keyring/testingPairs';
 import { IExtrinsic, IMethod } from '@plugnet/types/types';
 import { createType, Header } from '@plugnet/types';
+import { createTypeUnsafe } from '@plugnet/types/codec/createType';
 
 import { SubmittableResult } from './';
 
@@ -95,8 +96,11 @@ export default async function test (): Promise<void> {
 
   // check correct types with `createType`
   const balance = createType('Balance', 2);
-  const overridden = createType<Index>('Gas', 2);
   const gas = createType('Gas', 2);
-  const vec = createType('Vec<u32>', 2);
-  console.log(balance, overridden, gas, vec);
+  const compact = createType('Compact<u32>', 2);
+  // const random = createType('RandomType', 2); // This one should deliberately show a TS error
+
+  const gasUnsafe = createTypeUnsafe('Gas', 2);
+  const overriddenUnsafe = createTypeUnsafe<Header>('Gas', 2);
+  console.log(balance, gas, compact, gasUnsafe, overriddenUnsafe);
 }
