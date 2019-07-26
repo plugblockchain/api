@@ -4,15 +4,14 @@
 
 // Simple non-runnable checks to test type definitions in the editor itself
 
-import { Index } from '@plugnet/types/interfaces';
+import { Header, Index } from '@plugnet/types/interfaces';
 
 import { ApiPromise } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive';
 import { ConstantCodec } from '@plugnet/api-metadata/consts/types';
 import testKeyring from '@plugnet/keyring/testingPairs';
 import { IExtrinsic, IMethod } from '@plugnet/types/types';
-import { createType, Header } from '@plugnet/types';
-import { createTypeUnsafe } from '@plugnet/types/codec/createType';
+import createType, { createTypeUnsafe } from '@plugnet/types/codec/createType';
 
 import { SubmittableResult } from './';
 
@@ -38,11 +37,11 @@ export default async function test (): Promise<void> {
   });
 
   await api.rpc.chain.subscribeNewHead<Header>((header): void => {
-    console.log('current blockNumber:', header.blockNumber);
+    console.log('current blockNumber:', header.number);
   });
 
   await api.rpc.chain.subscribeNewHead((header: Header): void => {
-    console.log('current blockNumber:', header.blockNumber);
+    console.log('current blockNumber:', header.number);
   });
 
   await api.derive.chain.subscribeNewHead((header: HeaderExtended): void => {

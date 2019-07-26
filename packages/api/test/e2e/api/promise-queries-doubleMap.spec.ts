@@ -2,9 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Header } from '@plugnet/types/interfaces';
+
 import testingPairs from '@plugnet/keyring/testingPairs';
 import WsProvider from '@plugnet/rpc-provider/ws';
-import { Header, Option } from '@plugnet/types';
+import { Option } from '@plugnet/types';
 import { encodeAddress, randomAsU8a } from '@plugnet/util-crypto';
 
 import ApiPromise from '../../../src/promise';
