@@ -2,9 +2,9 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { RuntimeVersion } from '@plugnet/types/interfaces';
+import { Header, RuntimeVersion } from '@plugnet/types/interfaces';
 
-import { ClassOf, Header } from '@plugnet/types';
+import { ClassOf } from '@plugnet/types';
 import WsProvider from '@plugnet/rpc-provider/ws';
 
 import Rpc from '@plugnet/rpc-core';
@@ -23,7 +23,7 @@ describe.skip('e2e chain', (): void => {
     rpc.chain
       .subscribeNewHead()
       .subscribe((header: Header): void => {
-        expect(header).toBeInstanceOf(Header);
+        expect(header).toBeInstanceOf(ClassOf('Header'));
 
         if (++count === 3) {
           done();
