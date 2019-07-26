@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ClassOf, Metadata } from '@plugnet/types';
-import json from '@plugnet/types/Metadata/v6/static';
+import json from '@plugnet/types/Metadata/static';
 import { injectDefinitions } from '@plugnet/types/srml';
 
 import fromMetadata from '../fromMetadata';

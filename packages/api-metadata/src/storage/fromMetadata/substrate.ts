@@ -4,7 +4,7 @@
 
 import { StorageEntryMetadata, StorageEntryModifier, StorageEntryType } from '@plugnet/types/Metadata/v6/Storage';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
-import { Text, Vector } from '@plugnet/types';
+import { Text, Vec } from '@plugnet/types';
 
 import createFunction from './createFunction';
 
@@ -18,7 +18,7 @@ const createRuntimeFunction = (method: string, key: string, { documentation, typ
   createFunction(
     {
       meta: {
-        documentation: new Vector(Text, [documentation]),
+        documentation: new Vec(Text, [documentation]),
         modifier: new StorageEntryModifier(1), // default
         type: new StorageEntryType(type, 0),
         toJSON: (): any => key

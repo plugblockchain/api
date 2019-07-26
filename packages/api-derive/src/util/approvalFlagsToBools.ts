@@ -4,9 +4,9 @@
 
 import { ApprovalFlag } from '@plugnet/types/srml/elections/types';
 
-import { Vector } from '@plugnet/types';
+import { Vec } from '@plugnet/types';
 
-export function approvalFlagsToBools (flags: Vector<ApprovalFlag>): boolean[] {
+export function approvalFlagsToBools (flags: Vec<ApprovalFlag>): boolean[] {
   const bools: boolean[] = [];
 
   flags.forEach((flag: ApprovalFlag): void => {

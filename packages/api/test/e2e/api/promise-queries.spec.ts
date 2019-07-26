@@ -2,12 +2,12 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Hash, SessionIndex } from '@plugnet/types/srml/types';
+import { EventRecord, Hash, SessionIndex } from '@plugnet/types/srml/types';
 
 import { HeaderExtended } from '@plugnet/api-derive';
 import WsProvider from '@plugnet/rpc-provider/ws';
 import { LinkageResult } from '@plugnet/types/codec/Linkage';
-import { EventRecord, Header, Option, Vector, createType } from '@plugnet/types';
+import { Header, Option, Vec, createType } from '@plugnet/types';
 
 import ApiPromise from '../../../src/promise';
 import describeE2E from '../../util/describeE2E';
@@ -80,7 +80,7 @@ describeE2E()('Promise e2e queries', (wsUrl): void => {
 
   it('makes a query at a latest block (specified)', async (): Promise<void> => {
     const header = await api.rpc.chain.getHeader() as Header;
-    const events = await api.query.system.events.at(header.hash) as Vector<EventRecord>;
+    const events = await api.query.system.events.at(header.hash) as Vec<EventRecord>;
 
     expect(events.length).not.toEqual(0);
 

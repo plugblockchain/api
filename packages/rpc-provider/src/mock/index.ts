@@ -3,6 +3,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { Codec } from '@plugnet/types/types';
 import { ProviderInterface, ProviderInterfaceEmitted, ProviderInterfaceEmitCb } from '../types';
 import { MockStateSubscriptions, MockStateSubscriptionCallback, MockStateDb } from './types';
 
@@ -11,10 +12,9 @@ import EventEmitter from 'eventemitter3';
 import interfaces from '@plugnet/jsonrpc';
 import testKeyring from '@plugnet/keyring/testing';
 import storage from '@plugnet/api-metadata/storage/static';
-import { Codec } from '@plugnet/types/types';
 import rpcMetadata from '@plugnet/types/Metadata/static';
 import rpcSignedBlock from '@plugnet/types/json/SignedBlock.004.immortal.json';
-import { Header, RuntimeVersion, SignedBlock } from '@plugnet/types';
+import { createType, Header } from '@plugnet/types';
 import { bnToU8a, logger, u8aToHex } from '@plugnet/util';
 import { randomAsU8a } from '@plugnet/util-crypto';
 
@@ -48,10 +48,10 @@ export default class Mock implements ProviderInterface {
 
   private requests: Record<string, (...params: any[]) => string> = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    chain_getBlock: (hash: string): any => new SignedBlock(rpcSignedBlock.result).toJSON(),
+    chain_getBlock: (hash: string): any => createType('SignedBlock', rpcSignedBlock.result).toJSON(),
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     chain_getBlockHash: (blockNumber: number): string => '0x1234',
-    chain_getRuntimeVersion: (): string => new RuntimeVersion().toHex(),
+    chain_getRuntimeVersion: (): string => createType('RuntimeVersion').toHex(),
     state_getStorage: (storage: MockStateDb, params: any[]): string => {
       return u8aToHex(
         storage[(params[0] as string)]
