@@ -2,15 +2,14 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import '@plugnet/types/injector';
+
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { Metadata } from '@plugnet/types';
 import json from '@plugnet/types/Metadata/static';
-import { injectDefinitions } from '@plugnet/types/srml';
 import { u8aToHex } from '@plugnet/util';
 
 import fromMetadata from '../fromMetadata';
-
-injectDefinitions();
 
 const keyring = testingPairs({ type: 'ed25519' });
 
