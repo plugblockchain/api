@@ -2,9 +2,9 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { SetIndex, VoteIndex } from '@plugnet/types/srml/elections/types';
-import { Balance, BlockNumber, Index } from '@plugnet/types/srml/runtime/types';
-import { Exposure, RewardDestination, StakingLedger, ValidatorPrefs } from '@plugnet/types/srml/staking/types';
+import { SetIndex, VoteIndex } from '@plugnet/types/interfaces/elections';
+import { Balance, BlockNumber, Index } from '@plugnet/types/interfaces/runtime';
+import { Exposure, RewardDestination, StakingLedger, ValidatorPrefs } from '@plugnet/types/interfaces/staking';
 
 import BN from 'bn.js';
 import { AccountId, Vote } from '@plugnet/types';

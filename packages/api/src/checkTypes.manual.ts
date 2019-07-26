@@ -4,7 +4,7 @@
 
 // Simple non-runnable checks to test type definitions in the editor itself
 
-import { Index } from '@plugnet/types/srml/types';
+import { Index } from '@plugnet/types/interfaces';
 
 import { ApiPromise } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive';

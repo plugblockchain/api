@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ProviderInterface } from '@plugnet/rpc-provider/types';
-import { Hash, RuntimeVersion, SignedBlock } from '@plugnet/types/srml/types';
+import { Hash, RuntimeVersion, SignedBlock } from '@plugnet/types/interfaces';
 import { AnyFunction, Codec, CodecArg, RegistryTypes } from '@plugnet/types/types';
 import {
   ApiInterfaceRx, ApiInterfaceEvents, ApiOptions, ApiTypes, DecorateMethodOptions,
@@ -27,7 +27,7 @@ import { Event, getTypeRegistry, Metadata, Method, Null, u64 } from '@plugnet/ty
 import Linkage, { LinkageResult } from '@plugnet/types/codec/Linkage';
 import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@plugnet/types/primitive/Extrinsic/constants';
 import { MethodFunction, ModulesWithMethods } from '@plugnet/types/primitive/Method';
-import * as srmlTypes from '@plugnet/types/srml/definitions';
+import * as interfacesTypes from '@plugnet/types/interfaces/definitions';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 import { assert, compactStripLength, isFunction, isObject, isUndefined, logger, u8aToHex } from '@plugnet/util';
 import { cryptoWaitReady } from '@plugnet/util-crypto';
@@ -143,7 +143,7 @@ export default abstract class ApiBase<ApiType> {
     // we only re-register the types (global) if this is not a cloned instance
     if (!options.source) {
       // first register the definitions we have, i.e. those where there are no type classes
-      Object.values(srmlTypes).forEach(({ types }): void =>
+      Object.values(interfacesTypes).forEach(({ types }): void =>
         this.registerTypes(types)
       );
 

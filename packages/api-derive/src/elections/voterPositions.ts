@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { SetIndex } from '@plugnet/types/srml/elections/types';
+import { SetIndex } from '@plugnet/types/interfaces/elections';
 import { ApiInterfaceRx } from '@plugnet/api/types';
 import { AccountId, Vec, Option, createType } from '@plugnet/types';
 import { DerivedVoterPositions } from '../types';

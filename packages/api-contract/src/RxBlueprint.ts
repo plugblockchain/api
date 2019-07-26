@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ISubmittableResult, SubmittableResult } from '@plugnet/api/SubmittableExtrinsic';
-import { Hash } from '@plugnet/types/srml/types';
+import { Hash } from '@plugnet/types/interfaces';
 import { IKeyringPair } from '@plugnet/types/types';
 import { ContractABI } from './types';
 

@@ -4,7 +4,7 @@
 
 import '@plugnet/types/injector';
 
-import { Balance } from '@plugnet/types/srml/types';
+import { Balance } from '@plugnet/types/interfaces';
 import { Codec } from '@plugnet/types/types';
 
 import fromMetadata from '@plugnet/api-metadata/storage/fromMetadata';
