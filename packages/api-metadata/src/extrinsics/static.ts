@@ -4,7 +4,7 @@
 
 import { Metadata } from '@plugnet/types';
 import metadataRpc from '@plugnet/types/Metadata/static';
-import { ModulesWithMethods } from '@plugnet/types/primitive/Method';
+import { ModulesWithMethods } from '@plugnet/types/primitive/Generic/Method';
 
 import fromMetadata from './fromMetadata';
 

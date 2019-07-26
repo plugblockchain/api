@@ -2,9 +2,11 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { FunctionMetadata } from '@plugnet/types/Metadata/v6/Calls';
-import { MethodFunction } from '@plugnet/types/primitive/Method';
-import { Method } from '@plugnet/types';
+import { Method } from '@plugnet/types/interfaces';
+
+import { FunctionMetadata } from '@plugnet/types/Metadata/v7/Calls';
+import { MethodFunction } from '@plugnet/types/primitive/Generic/Method';
+import { ClassOf } from '@plugnet/types';
 import { assert, stringCamelCase } from '@plugnet/util';
 
 /**
@@ -31,7 +33,7 @@ export default function createDescriptor (
       `Extrinsic ${section}.${funcName} expects ${expectedArgs.length.valueOf()} arguments, got ${args.length}.`
     );
 
-    return new Method({
+    return new (ClassOf('Method'))({
       args,
       callIndex
     }, callMetadata);
