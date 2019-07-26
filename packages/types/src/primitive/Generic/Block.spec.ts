@@ -7,7 +7,7 @@ import '../../injector';
 import extrinsics from '@plugnet/api-metadata/extrinsics/static';
 
 import block00300 from '../../json/SignedBlock.003.00.json';
-import Method from '../Method';
+import Method from './Method';
 import Block from './Block';
 
 describe('Block', (): void => {

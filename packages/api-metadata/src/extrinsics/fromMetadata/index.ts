@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { ModuleMetadata } from '@plugnet/types/Metadata/v7/Metadata';
-import { Methods, ModulesWithMethods } from '@plugnet/types/primitive/Method';
+import { Methods, ModulesWithMethods } from '@plugnet/types/primitive/Generic/Method';
 import Metadata from '@plugnet/types/Metadata';
 import { stringCamelCase } from '@plugnet/util';
 

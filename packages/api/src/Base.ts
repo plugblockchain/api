@@ -23,10 +23,10 @@ import { Storage } from '@plugnet/api-metadata/storage/types';
 import storageFromMeta from '@plugnet/api-metadata/storage/fromMetadata';
 import RpcCore from '@plugnet/rpc-core';
 import { WsProvider } from '@plugnet/rpc-provider';
-import { getTypeRegistry, GenericEvent, Metadata, Method, Null, u64 } from '@plugnet/types';
+import { getTypeRegistry, GenericEvent, GenericMethod, Metadata, Null, u64 } from '@plugnet/types';
 import Linkage, { LinkageResult } from '@plugnet/types/codec/Linkage';
 import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@plugnet/types/primitive/Extrinsic/constants';
-import { MethodFunction, ModulesWithMethods } from '@plugnet/types/primitive/Method';
+import { MethodFunction, ModulesWithMethods } from '@plugnet/types/primitive/Generic/Method';
 import * as interfacesTypes from '@plugnet/types/interfaces/definitions';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 import { assert, compactStripLength, isFunction, isObject, isUndefined, logger, u8aToHex } from '@plugnet/util';
@@ -534,7 +534,7 @@ export default abstract class ApiBase<ApiType> {
     // only inject if we are not a clone (global init)
     if (!this._options.source) {
       GenericEvent.injectMetadata(this.runtimeMetadata);
-      Method.injectMethods(extrinsics);
+      GenericMethod.injectMethods(extrinsics);
 
       // detect the extrinsic version in-use based on the last block
       const lastBlock: SignedBlock = await this._rpcCore.chain.getBlock().toPromise();
