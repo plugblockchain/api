@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { StorageChangeSet } from '@plugnet/types/srml/types';
+import { StorageChangeSet } from '@plugnet/types/interfaces';
 
 import WsProvider from '@plugnet/rpc-provider/ws';
 import storage from '@plugnet/api-metadata/storage/static';

@@ -2,9 +2,9 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { BlockNumber } from '@plugnet/types/srml/runtime/types';
-import { Keys } from '@plugnet/types/srml/session/types';
-import { Exposure, RewardDestination, StakingLedger, UnlockChunk, ValidatorPrefs } from '@plugnet/types/srml/staking/types';
+import { BlockNumber } from '@plugnet/types/interfaces/runtime';
+import { Keys } from '@plugnet/types/interfaces/session';
+import { Exposure, RewardDestination, StakingLedger, UnlockChunk, ValidatorPrefs } from '@plugnet/types/interfaces/staking';
 
 import { ApiInterfaceRx } from '@plugnet/api/types';
 import { DerivedStaking, DerivedUnlocking } from '../types';

@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ChainProperties } from '@plugnet/types/srml/types';
+import { ChainProperties } from '@plugnet/types/interfaces';
 
 import { ClassOf, Extrinsic, Vec } from '@plugnet/types';
 import WsProvider from '@plugnet/rpc-provider/ws';

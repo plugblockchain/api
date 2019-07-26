@@ -4,7 +4,7 @@
 
 import { ProviderInterface } from '@plugnet/rpc-provider/types';
 import { RpcSection, RpcMethod } from '@plugnet/jsonrpc/types';
-import { StorageChangeSet, StorageData } from '@plugnet/types/srml/types';
+import { StorageChangeSet, StorageData } from '@plugnet/types/interfaces';
 import { AnyJson, Codec } from '@plugnet/types/types';
 import { RpcInterface, RpcInterfaceMethod, RpcInterfaceSection } from './types';
 
