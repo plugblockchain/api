@@ -5,7 +5,7 @@
 import BN from 'bn.js';
 import { Observable, of } from 'rxjs';
 import { ApiInterfaceRx } from '@plugnet/api/types';
-import { AccountId, Vector, Vote } from '@plugnet/types';
+import { AccountId, Vec, Vote } from '@plugnet/types';
 
 import { drr } from '../util/drr';
 
@@ -19,6 +19,6 @@ export function votes (api: ApiInterfaceRx): (referendumId: BN, accountIds?: Acc
             [referendumId, accountId]
           )
         )
-    ) as Observable<Vector<Vote>>).pipe(drr());
+    ) as Observable<Vec<Vote>>).pipe(drr());
   };
 }

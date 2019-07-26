@@ -5,9 +5,9 @@
 import { ApprovalFlag } from '@plugnet/types/srml/elections/types';
 
 import BN from 'bn.js';
-import { Vector } from '@plugnet/types';
+import { Vec } from '@plugnet/types';
 
-export function approvalFlagToBool (flags: Vector<ApprovalFlag>): boolean[] {
+export function approvalFlagToBool (flags: Vec<ApprovalFlag>): boolean[] {
   const bools: boolean[] = [];
   for (const flag of flags) {
     for (const bit of [...Array(flag.bitLength())].map((_, i): number => i)) {

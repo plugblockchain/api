@@ -2,8 +2,10 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
+import { SignedBlock } from '@plugnet/types/srml/types';
+
 import WsProvider from '@plugnet/rpc-provider/ws';
-import { Extrinsic, SignedBlock } from '@plugnet/types';
+import { Extrinsic } from '@plugnet/types';
 
 import ApiPromise from '../../../src/promise';
 import describeE2E from '../../util/describeE2E';
