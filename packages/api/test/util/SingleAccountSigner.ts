@@ -5,7 +5,7 @@
 import { Signer, SignerPayload, SignerResult } from '@plugnet/api/types';
 import { KeyringPair } from '@plugnet/keyring/types';
 
-import { ClassOf } from '@plugnet/types';
+import { createType } from '@plugnet/types';
 
 let id = 0;
 
@@ -41,7 +41,7 @@ export default class SingleAccountSigner implements Signer {
 
     return new Promise((resolve): void => {
       setTimeout((): void => {
-        const signed = new (ClassOf('ExtrinsicPayload'))(payload, { version: payload.version }).sign(this.keyringPair);
+        const signed = createType('ExtrinsicPayload', payload, { version: payload.version }).sign(this.keyringPair);
         const result: SignerResult = { id: ++id, ...signed };
 
         resolve(result);
