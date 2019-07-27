@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Balance, Hash, StorageData } from '@plugnet/types/interfaces';
+import { Balance, Hash, Moment, StorageData } from '@plugnet/types/interfaces';
 
 import fs from 'fs';
 import path from 'path';
@@ -13,10 +13,10 @@ import storage from '@plugnet/api-metadata/storage/static';
 import { Abi } from '@plugnet/api-contract';
 import testingPairs from '@plugnet/keyring/testingPairs';
 import { KeyringPair } from '@plugnet/keyring/types';
-import WsProvider from '@plugnet/rpc-provider/ws';
-import { Bytes, Metadata, Moment, StorageKey } from '@plugnet/types';
-
 import Rpc from '@plugnet/rpc-core';
+import WsProvider from '@plugnet/rpc-provider/ws';
+import { Bytes, Metadata, StorageKey } from '@plugnet/types';
+
 import flipperAbi from '../../../../api-contract/test/contracts/flipper.json';
 
 const ALICE = '5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY';
