@@ -6,7 +6,7 @@ import { Method } from '@plugnet/types/interfaces';
 
 import { FunctionMetadata } from '@plugnet/types/Metadata/v7/Calls';
 import { MethodFunction } from '@plugnet/types/primitive/Generic/Method';
-import { ClassOf } from '@plugnet/types';
+import { createType } from '@plugnet/types';
 import { assert, stringCamelCase } from '@plugnet/util';
 
 /**
@@ -33,7 +33,7 @@ export default function createDescriptor (
       `Extrinsic ${section}.${funcName} expects ${expectedArgs.length.valueOf()} arguments, got ${args.length}.`
     );
 
-    return new (ClassOf('Method'))({
+    return createType('Method', {
       args,
       callIndex
     }, callMetadata);
