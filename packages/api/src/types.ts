@@ -3,7 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import { Hash, RuntimeVersion } from '@plugnet/types/interfaces';
-import { AnyFunction, Callback, Codec, CodecArg, IExtrinsic, RegistryTypes, SignatureOptions } from '@plugnet/types/types';
+import { AnyFunction, Callback, CallFunction, Codec, CodecArg, IExtrinsic, RegistryTypes, SignatureOptions } from '@plugnet/types/types';
 
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
@@ -11,7 +11,6 @@ import { DeriveCustom } from '@plugnet/api-derive';
 import { Constants } from '@plugnet/api-metadata/consts/types';
 import { ProviderInterface, ProviderInterfaceEmitted } from '@plugnet/rpc-provider/types';
 import { u64 } from '@plugnet/types';
-import { MethodFunction } from '@plugnet/types/primitive/Generic/Method';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 
 import ApiBase from './Base';
@@ -164,7 +163,7 @@ export interface QueryableStorage<ApiType> {
   [index: string]: QueryableModuleStorage<ApiType>;
 }
 
-export interface SubmittableExtrinsicFunction<ApiType> extends MethodFunction {
+export interface SubmittableExtrinsicFunction<ApiType> extends CallFunction {
   (...params: CodecArg[]): SubmittableExtrinsic<ApiType>;
 }
 
