@@ -2,7 +2,7 @@
 // Import the API, Keyring and some utility functions
 const { ApiPromise } = require('@plugnet/api');
 const { Keyring } = require('@plugnet/keyring');
-const { ExtrinsicEra } = require('@plugnet/types/type');
+const { createType } = require('@plugnet/types');
 
 const BOB = '5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty';
 
@@ -26,8 +26,10 @@ async function main () {
   const currentHeight = signedBlock.block.header.number;
   const blockHash = signedBlock.block.header.hash;
 
+  // NOTE By default the API will send mortal transactions, only explicitly construct
+  // if you wish to override the defaults
   // construct a mortal era
-  const era = new ExtrinsicEra({ current: currentHeight, period: 10 });
+  const era = createType('ExtrinsicEra', { current: currentHeight, period: 10 });
 
   // Create an extrinsic, transferring 12345 units to Bob
   const transfer = api.tx.balances.transfer(BOB, 12345);
