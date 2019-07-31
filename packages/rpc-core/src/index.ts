@@ -4,7 +4,7 @@
 
 import { ProviderInterface } from '@plugnet/rpc-provider/types';
 import { RpcSection, RpcMethod } from '@plugnet/jsonrpc/types';
-import { StorageChangeSet, StorageData } from '@plugnet/types/interfaces';
+import { StorageChangeSet } from '@plugnet/types/interfaces';
 import { AnyJson, Codec } from '@plugnet/types/types';
 import { RpcInterface, RpcInterfaceMethod, RpcInterfaceSection } from './types';
 
@@ -12,7 +12,7 @@ import memoizee from 'memoizee';
 import { combineLatest, from, Observable, Observer, of, throwError } from 'rxjs';
 import { catchError, map, publishReplay, refCount, switchMap } from 'rxjs/operators';
 import interfaces from '@plugnet/jsonrpc';
-import { ClassOf, Option, StorageKey, Vec, createClass } from '@plugnet/types';
+import { ClassOf, Option, StorageData, StorageKey, Vec, createClass } from '@plugnet/types';
 import { createTypeUnsafe } from '@plugnet/types/codec/createType';
 import { ExtError, assert, isFunction, isNull, isNumber, logger } from '@plugnet/util';
 
