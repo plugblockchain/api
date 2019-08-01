@@ -6,7 +6,7 @@ import testingPairs from '@plugnet/keyring/testingPairs';
 import WsProvider from '@plugnet/rpc-provider/ws';
 import storage from '@plugnet/api-metadata/storage/static';
 import Rpc from '@plugnet/rpc-core';
-import { StorageChangeSet } from '@plugnet/types/interfaces';
+import { Index, Moment, SessionIndex } from '@plugnet/types/interfaces';
 import { ClassOf } from '@plugnet/types';
 
 import { describeE2E } from '../../util';
@@ -27,11 +27,11 @@ describeE2E({
 
   it('subscribes to storage', (done): void => {
     rpc.state
-      .subscribeStorage([
-        [storage.system.accountNonce, keyring.eve.address],
-        [storage.session.currentIndex]
-      ])
-      .subscribe((data: StorageChangeSet): void => {
+      .subscribeStorage<[Index, SessionIndex]>([
+      [storage.system.accountNonce, keyring.eve.address],
+      [storage.session.currentIndex]
+    ])
+      .subscribe((data): void => {
         expect(data).toHaveLength(2);
         expect(data).toEqual(
           expect.arrayContaining([
@@ -48,8 +48,8 @@ describeE2E({
     let count = 0;
 
     rpc.state
-      .subscribeStorage([[storage.timestamp.now]])
-      .subscribe((data: StorageChangeSet): void => {
+      .subscribeStorage<Moment>([[storage.timestamp.now]])
+      .subscribe((data): void => {
         expect(data).toBeDefined();
 
         if (++count === 3) {
