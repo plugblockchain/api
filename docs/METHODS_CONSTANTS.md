@@ -1,6 +1,8 @@
 ## Constants
 
 _The following sections contain the module constants, also known as parameter types.
+- **[babe](#babe)**
+
 - **[balances](#balances)**
 
 - **[contracts](#contracts)**
@@ -21,6 +23,17 @@ _The following sections contain the module constants, also known as parameter ty
 
 - **[treasury](#treasury)**
 
+
+___
+
+
+### babe
+
+▸ **epochDuration**: `u64`
+- **summary**:   The number of **slots** that an epoch takes. We couple sessions to  epochs, i.e. we start a new session once the new epoch begins.
+
+▸ **expectedBlockTime**: `Moment`
+- **summary**:   The expected average block time at which BABE should be creating  blocks. Since BABE is probabilistic it is not trivial to figure out  what the expected average block time should be based on the slot  duration and the security parameter `c` (where `1 - c` represents  the probability of a slot being empty).
 
 ___
 
@@ -123,7 +136,7 @@ ___
 
 ### elections
 
-▸ **aPPROVAL_SET_SIZE**: `u32`
+▸ **approvalSetSize**: `u32`
 - **summary**:   The chunk size of the approval vector.
 
 ▸ **candidacyBond**: `BalanceOf`
@@ -141,7 +154,7 @@ ___
 ▸ **presentSlashPerVoter**: `BalanceOf`
 - **summary**:   The punishment, per voter, if you provide an invalid presentation. A  reasonable default value is 1.
 
-▸ **vOTER_SET_SIZE**: `u32`
+▸ **voterSetSize**: `u32`
 - **summary**:   The chunk size of the voter vector.
 
 ▸ **votingBond**: `BalanceOf`
@@ -177,7 +190,7 @@ ___
 
 ### session
 
-▸ **dEDUP_KEY_PREFIX**: `Bytes`
+▸ **dedupKeyPrefix**: `Bytes`
 - **summary**:   Used as first key for `NextKeys` and `KeyOwner` to put all the data into the same branch  of the trie.
 
 ___
