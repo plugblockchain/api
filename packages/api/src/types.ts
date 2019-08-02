@@ -11,7 +11,7 @@ import { DeriveCustom } from '@plugnet/api-derive';
 import { Constants } from '@plugnet/api-metadata/consts/types';
 import { RpcInterface } from '@plugnet/rpc-core/jsonrpc.types';
 import { ProviderInterface, ProviderInterfaceEmitted } from '@plugnet/rpc-provider/types';
-import { u64 } from '@plugnet/types';
+import { Metadata, u64 } from '@plugnet/types';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 
 import ApiBase from './Base';
