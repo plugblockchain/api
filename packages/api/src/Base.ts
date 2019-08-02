@@ -6,12 +6,7 @@ import { RpcInterface } from '@plugnet/rpc-core/jsonrpc.types';
 import { ProviderInterface } from '@plugnet/rpc-provider/types';
 import { Hash, RuntimeVersion, SignedBlock } from '@plugnet/types/interfaces';
 import { AnyFunction, CallFunction, Codec, CodecArg, ModulesWithCalls, RegistryTypes } from '@plugnet/types/types';
-import {
-  ApiInterfaceRx, ApiInterfaceEvents, ApiOptions, ApiTypes, DecorateMethodOptions,
-  DecoratedRpc, DecoratedRpcSection,
-  QueryableModuleStorage, QueryableStorage, QueryableStorageEntry, QueryableStorageMulti, QueryableStorageMultiArg, QueryableStorageMultiArgs,
-  SubmittableExtrinsicFunction, SubmittableExtrinsics, SubmittableModuleExtrinsics, Signer
-} from './types';
+import { ApiInterfaceRx, ApiInterfaceEvents, ApiOptions, ApiTypes, DecorateMethodOptions, DecoratedRpc, DecoratedRpcSection, QueryableModuleStorage, QueryableStorage, QueryableStorageEntry, QueryableStorageMulti, QueryableStorageMultiArg, QueryableStorageMultiArgs, SignerPayloadRawBase, SubmittableExtrinsicFunction, SubmittableExtrinsics, SubmittableModuleExtrinsics, Signer } from './types';
 
 import EventEmitter from 'eventemitter3';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -29,7 +24,7 @@ import Linkage, { LinkageResult } from '@plugnet/types/codec/Linkage';
 import { DEFAULT_VERSION as EXTRINSIC_DEFAULT_VERSION } from '@plugnet/types/primitive/Extrinsic/constants';
 import * as interfacesTypes from '@plugnet/types/interfaces/definitions';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
-import { assert, compactStripLength, isFunction, isObject, isUndefined, logger, u8aToHex, u8aToU8a } from '@plugnet/util';
+import { assert, compactStripLength, isFunction, isObject, isString, isUndefined, logger, u8aToHex, u8aToU8a } from '@plugnet/util';
 import { cryptoWaitReady } from '@plugnet/util-crypto';
 
 import createSubmittable, { SubmittableExtrinsic } from './SubmittableExtrinsic';
@@ -41,6 +36,10 @@ interface MetaDecoration {
   method: string;
   section: string;
   toJSON: () => any;
+}
+
+interface KeyringSigner {
+  sign (message: Uint8Array): Uint8Array;
 }
 
 const INIT_ERROR = `Api needs to be initialised before using, listen on 'ready'`;
@@ -221,6 +220,28 @@ export default abstract class ApiBase<ApiType> {
    */
   public setSigner (signer: Signer): void {
     this._rx.signer = signer;
+  }
+
+  /**
+   * @description Signs a raw signer payload, string or Uint8Array
+   */
+  public async sign (signer: KeyringSigner | string, data: SignerPayloadRawBase): Promise<string> {
+    // NOTE Do we really want to do this? Or turn it into an observable for rxjs?
+    if (isString(signer)) {
+      if (!this._rx.signer || !this._rx.signer.signRaw) {
+        throw new Error('No signer exists with a signRaw interface');
+      }
+
+      return (
+        await this._rx.signer.signRaw({
+          type: 'bytes',
+          ...data,
+          address: signer
+        })
+      ).signature;
+    }
+
+    return u8aToHex(signer.sign(u8aToU8a(data.data)));
   }
 
   /**
