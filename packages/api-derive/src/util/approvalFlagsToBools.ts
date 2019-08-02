@@ -6,7 +6,7 @@ import { ApprovalFlag } from '@plugnet/types/interfaces/elections';
 
 import { Vec } from '@plugnet/types';
 
-export function approvalFlagsToBools (flags: Vec<ApprovalFlag>): boolean[] {
+export function approvalFlagsToBools (flags: Vec<ApprovalFlag> | ApprovalFlag[]): boolean[] {
   const bools: boolean[] = [];
 
   flags.forEach((flag: ApprovalFlag): void => {
