@@ -30,7 +30,7 @@
     "@plugnet/jsonrpc": "^0.90.0-beta.0",
     "@plugnet/rpc-provider": "^0.90.0-beta.0",
     "@plugnet/types": "^0.90.0-beta.0",
-    "@plugnet/util": "^0.94.100",
+    "@plugnet/util": "^1.1.100",
     "rxjs": "^6.5.2"
   }
 }

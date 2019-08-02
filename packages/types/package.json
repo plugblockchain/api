@@ -27,12 +27,12 @@
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/types#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
-    "@plugnet/util": "^0.94.100",
-    "@plugnet/util-crypto": "^0.94.100",
+    "@plugnet/util": "^1.1.100",
+    "@plugnet/util-crypto": "^1.1.100",
     "@types/memoizee": "^0.4.2",
     "memoizee": "^0.4.14"
   },
   "devDependencies": {
-    "@plugnet/keyring": "^0.94.100"
+    "@plugnet/keyring": "^1.1.100"
   }
 }
