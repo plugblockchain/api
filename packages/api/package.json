@@ -32,9 +32,9 @@
     "@plugnet/rpc-core": "^0.90.0-beta.0",
     "@plugnet/rpc-provider": "^0.90.0-beta.0",
     "@plugnet/types": "^0.90.0-beta.0",
-    "@plugnet/util-crypto": "^0.94.100"
+    "@plugnet/util-crypto": "^1.1.100"
   },
   "devDependencies": {
-    "@plugnet/keyring": "^0.94.100"
+    "@plugnet/keyring": "^1.1.100"
   }
 }

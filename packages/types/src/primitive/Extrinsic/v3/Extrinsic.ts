@@ -5,7 +5,7 @@
 import { ExtrinsicPayloadValue, IExtrinsicImpl, IKeyringPair, SignatureOptions } from '../../../types';
 import { ExtrinsicOptions } from '../types';
 
-import { isU8a } from '@polkadot/util';
+import { isU8a } from '@plugnet/util';
 
 import Struct from '../../../codec/Struct';
 import Call from '../../Generic/Call';

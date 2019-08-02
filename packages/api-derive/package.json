@@ -32,6 +32,6 @@
     "@plugnet/types": "^0.90.0-beta.0"
   },
   "devDependencies": {
-    "@plugnet/keyring": "^0.94.100"
+    "@plugnet/keyring": "^1.1.100"
   }
 }
