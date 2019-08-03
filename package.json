@@ -12,7 +12,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "build": "plugnet-dev-build-ts && yarn run build:methodsdoc",
+    "build": "yarn build:interfaces && plugnet-dev-build-ts && yarn run build:methodsdoc",
     "build:htmldoc": "yarn clean && typedoc --theme default --out docs/html",
     "build:interfaces": "node packages/types/src/scripts/interfacesTsWrapper.js",
     "build:methodsdoc": "node packages/types/src/scripts/MetadataMdWrapper.js",
@@ -32,8 +32,8 @@
     "@babel/core": "^7.5.5",
     "@babel/register": "^7.5.5",
     "@babel/runtime": "^7.5.5",
-    "@plugnet/dev": "^0.30.8",
-    "@polkadot/ts": "^0.1.62",
+    "@plugnet/dev": "^0.31.0",
+    "@polkadot/ts": "^0.1.63",
     "gh-pages": "^2.1.0"
   }
 }
