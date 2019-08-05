@@ -1,6 +1,6 @@
 {
   "name": "@plugnet/api",
-  "version": "0.82.0-beta.96",
+  "version": "0.82.0-beta.97",
   "description": "Promise and RxJS wrappers around the Plugnet JS RPC",
   "main": "index.js",
   "keywords": [
@@ -27,11 +27,11 @@
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/api#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
-    "@plugnet/api-derive": "^0.82.0-beta.96",
-    "@plugnet/api-metadata": "^0.82.0-beta.96",
-    "@plugnet/rpc-core": "^0.82.0-beta.96",
-    "@plugnet/rpc-provider": "^0.82.0-beta.96",
-    "@plugnet/types": "^0.82.0-beta.96",
+    "@plugnet/api-derive": "^0.82.0-beta.97",
+    "@plugnet/api-metadata": "^0.82.0-beta.97",
+    "@plugnet/rpc-core": "^0.82.0-beta.97",
+    "@plugnet/rpc-provider": "^0.82.0-beta.97",
+    "@plugnet/types": "^0.82.0-beta.97",
     "@plugnet/util-crypto": "^0.94.100"
   },
   "devDependencies": {
