@@ -2,13 +2,13 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { AccountId, BlockNumber } from '@polkadot/types/interfaces';
-import { Codec } from '@polkadot/types/types';
+import { AccountId, BlockNumber } from '@plugnet/types/interfaces';
+import { Codec } from '@plugnet/types/types';
 
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiInterfaceRx } from '@polkadot/api/types';
+import { ApiInterfaceRx } from '@plugnet/api/types';
 import { DerivedRecentlyOffline } from '../types';
 
 import { drr } from '../util/drr';
