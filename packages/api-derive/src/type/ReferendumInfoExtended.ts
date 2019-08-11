@@ -6,11 +6,11 @@ import { ReferendumIndex, ReferendumInfo } from '@plugnet/types/interfaces/democ
 import { AnyJsonObject, Constructor } from '@plugnet/types/types';
 
 import BN from 'bn.js';
-import { ClassOf, createType } from '@plugnet/types';
+import democracyTypes from '@plugnet/types/interfaces/democracy/definitions';
+import { Struct, createType } from '@plugnet/types';
 
-// This is a bit hacky, but is exactly what it resolves to when compiled -
-// and as a bonus is gets the typing right
-const _ReferendumInfo: Constructor<ReferendumInfo> = ClassOf('ReferendumInfo');
+// @ts-ignore
+const _ReferendumInfo: Constructor<ReferendumInfo> = Struct.with(democracyTypes.types.ReferendumInfo);
 
 /**
  * @name ReferendumInfoExtended

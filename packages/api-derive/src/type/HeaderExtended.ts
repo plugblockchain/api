@@ -5,11 +5,11 @@
 import { AccountId, Header } from '@plugnet/types/interfaces';
 import { AnyJsonObject, Constructor } from '@plugnet/types/types';
 
-import { ClassOf } from '@plugnet/types';
+import runtimeTypes from '@plugnet/types/interfaces/runtime/definitions';
+import { Struct } from '@plugnet/types';
 
-// This is a bit hacky, but is exactly what it resolves to when compiled -
-// and as a bonus is gets the typing right
-const _Header: Constructor<Header> = ClassOf('Header');
+// @ts-ignore
+const _Header: Constructor<Header> = Struct.with(runtimeTypes.types.Header);
 
 /**
  * @name HeaderExtended
