@@ -1,6 +1,6 @@
 {
   "name": "@plugnet/api-derive",
-  "version": "0.90.0-beta.0",
+  "version": "0.90.0-beta.45",
   "description": "Common functions used across Plugnet, derived from RPC calls and storage queries.",
   "main": "index.js",
   "keywords": [
@@ -28,8 +28,8 @@
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/api-derive#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
-    "@plugnet/api": "^0.90.0-beta.0",
-    "@plugnet/types": "^0.90.0-beta.0"
+    "@plugnet/api": "^0.90.0-beta.45",
+    "@plugnet/types": "^0.90.0-beta.45"
   },
   "devDependencies": {
     "@plugnet/keyring": "^1.1.100"
