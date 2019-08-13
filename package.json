@@ -34,6 +34,6 @@
     "@babel/runtime": "^7.5.5",
     "@plugnet/dev": "^0.31.0",
     "@polkadot/ts": "^0.1.64",
-    "gh-pages": "2.0.1"
+    "gh-pages": "^2.1.1"
   }
 }
