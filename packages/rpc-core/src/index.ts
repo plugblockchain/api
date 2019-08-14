@@ -14,7 +14,7 @@ import { combineLatest, from, Observable, Observer, of, throwError } from 'rxjs'
 import { catchError, map, publishReplay, refCount, switchMap } from 'rxjs/operators';
 import interfaces from '@plugnet/jsonrpc';
 import { ClassOf, Option, StorageData, StorageKey, Vec, createClass } from '@plugnet/types';
-import { createTypeUnsafe } from '@plugnet/types/codec/createType';
+import { createTypeUnsafe } from '@plugnet/types/codec';
 import { ExtError, assert, isFunction, isNull, isNumber, logger } from '@plugnet/util';
 
 const l = logger('rpc-core');

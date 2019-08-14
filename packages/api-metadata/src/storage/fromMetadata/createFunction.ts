@@ -6,7 +6,7 @@ import { Codec } from '@plugnet/types/types';
 
 import BN from 'bn.js';
 import { Bytes, Compact, StorageKey, U8a } from '@plugnet/types';
-import { createTypeUnsafe } from '@plugnet/types/codec/createType';
+import { createTypeUnsafe } from '@plugnet/types/codec';
 import { PlainType, StorageEntryMetadata, StorageEntryModifier, StorageEntryType } from '@plugnet/types/Metadata/v6/Storage';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 import { assert, isNull, isUndefined, stringLowerFirst, stringToU8a, u8aConcat } from '@plugnet/util';

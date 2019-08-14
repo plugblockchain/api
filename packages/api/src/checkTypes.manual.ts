@@ -4,14 +4,14 @@
 
 // Simple non-runnable checks to test type definitions in the editor itself
 
+import { ConstantCodec } from '@plugnet/api-metadata/consts/types';
 import { Balance, Header, Index } from '@plugnet/types/interfaces';
+import { IExtrinsic, IMethod } from '@plugnet/types/types';
 
 import { ApiPromise } from '@plugnet/api';
 import { HeaderExtended } from '@plugnet/api-derive';
-import { ConstantCodec } from '@plugnet/api-metadata/consts/types';
 import testKeyring, { TestKeyringMap } from '@plugnet/keyring/testingPairs';
-import { IExtrinsic, IMethod } from '@plugnet/types/types';
-import createType, { createTypeUnsafe } from '@plugnet/types/codec/createType';
+import { createType, createTypeUnsafe } from '@plugnet/types/codec';
 
 import { SubmittableResult } from './';
 

@@ -7,7 +7,7 @@ import { Codec, IHash } from '../types';
 import { isU8a, u8aToHex } from '@plugnet/util';
 import { blake2AsU8a } from '@plugnet/util-crypto';
 
-import createType from '../codec/createType';
+import { createType } from '../codec/create';
 
 /**
  * @name Bool

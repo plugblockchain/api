@@ -6,7 +6,7 @@ import BN from 'bn.js';
 import { isBn, isHex, isNumber, isU8a, u8aConcat, u8aToHex, u8aToU8a, u8aToBn } from '@plugnet/util';
 import { decodeAddress } from '@plugnet/util-crypto';
 
-import createType from '../../codec/createType';
+import { createType } from '../../codec/create';
 import Base from '../../codec/Base';
 import AccountId from './AccountId';
 import AccountIndex from './AccountIndex';

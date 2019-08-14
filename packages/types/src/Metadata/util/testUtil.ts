@@ -6,7 +6,7 @@ import '../../injector';
 
 import extrinsicsFromMeta from '@plugnet/api-metadata/extrinsics/fromMetadata';
 
-import { createTypeUnsafe } from '../../codec/createType';
+import { createTypeUnsafe } from '../../codec/create';
 import Metadata from '../Metadata';
 import Call from '../../primitive/Generic/Call';
 import { MetadataInterface } from '../types';
