@@ -6,7 +6,7 @@ import '../../injector';
 
 import extrinsics from '@plugnet/api-metadata/extrinsics/static';
 
-import createType from '../../codec/createType';
+import { createType } from '../../codec/create';
 import Call from '../../primitive/Generic/Call';
 import events from '../../json/SignedBlock.002.json';
 import immortalTxs from '../../json/SignedBlock.004.immortal.json';

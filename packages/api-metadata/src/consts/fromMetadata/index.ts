@@ -4,7 +4,7 @@
 
 import { Constants, ConstantCodec, ModuleConstants } from '../types';
 
-import { createTypeUnsafe } from '@plugnet/types/codec/createType';
+import { createTypeUnsafe } from '@plugnet/types/codec';
 import Metadata from '@plugnet/types/Metadata';
 import { stringCamelCase } from '@plugnet/util';
 

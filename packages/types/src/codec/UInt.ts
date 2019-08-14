@@ -6,7 +6,7 @@ import { AnyNumber } from '../types';
 
 import { bnToHex, bnToU8a } from '@plugnet/util';
 
-import { ClassOf } from './createType';
+import { ClassOf } from './create';
 import AbstractInt, { DEFAULT_UINT_BITS, UIntBitLength } from './AbstractInt';
 
 /**
