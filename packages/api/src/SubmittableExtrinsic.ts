@@ -13,7 +13,7 @@ import { createType, Vec } from '@plugnet/types';
 import { isBn, isFunction, isNumber, isUndefined } from '@plugnet/util';
 
 import filterEvents from './util/filterEvents';
-import ApiBase from './Base';
+import ApiBase from './base';
 import SignerPayload from './SignerPayload';
 
 // eslint-disable-next-line @typescript-eslint/interface-name-prefix
