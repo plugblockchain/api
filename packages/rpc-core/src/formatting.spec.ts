@@ -13,7 +13,7 @@ import Metadata from '@plugnet/types/Metadata';
 import rpcMetadataV3 from '@plugnet/types/Metadata/v3/static';
 import rpcMetadataV4 from '@plugnet/types/Metadata/v4/static';
 import rpcMetadataV5 from '@plugnet/types/Metadata/v5/static';
-import rpcMetadataV6 from '@plugnet/types/Metadata/static';
+import rpcMetadataV6 from '@plugnet/types/Metadata/v6/static';
 import rpcMetadataV7 from '@plugnet/types/Metadata/v7/static';
 
 import Api from '.';
