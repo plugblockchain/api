@@ -6,8 +6,8 @@ import { Codec } from '@plugnet/types/types';
 
 import BN from 'bn.js';
 import { Bytes, Compact, StorageKey, U8a } from '@plugnet/types';
-import { createTypeUnsafe } from '@plugnet/types/codec';
-import { PlainType, StorageEntryMetadata, StorageEntryModifier, StorageEntryType } from '@plugnet/types/Metadata/v6/Storage';
+import { createType, createTypeUnsafe } from '@plugnet/types/codec';
+import { StorageEntryMetadata, StorageEntryType } from '@plugnet/types/Metadata/v7/Storage';
 import { StorageEntry } from '@plugnet/types/primitive/StorageKey';
 import { assert, isNull, isUndefined, stringLowerFirst, stringToU8a, u8aConcat } from '@plugnet/util';
 
@@ -105,7 +105,7 @@ export default function createFunction ({ meta, method, prefix, section }: Creat
   // instances (e.g. collective) will not work since it is only matched on param meta
   storageFn.toJSON = (): any => ({ ...(meta.toJSON() as any), storage: { method, prefix, section } });
 
-  if (meta.type.isMap && meta.type.asMap.isLinked) {
+  if (meta.type.isMap && meta.type.asMap.linked.isTrue) {
     const headHash = new U8a(hasher(`head of ${stringKey}`));
     const headFn: any = (): U8a => headHash;
 
@@ -113,8 +113,8 @@ export default function createFunction ({ meta, method, prefix, section }: Creat
     // meta fallback only applies to actual entry values, create one for head
     headFn.meta = new StorageEntryMetadata({
       name: meta.name,
-      modifier: new StorageEntryModifier('Required'),
-      type: new StorageEntryType(new PlainType(meta.type.asMap.key), 0),
+      modifier: createType('StorageEntryModifierV7', 1), // required
+      type: new StorageEntryType(createType('PlainTypeV7', meta.type.asMap.key), 0),
       fallback: new Bytes(createTypeUnsafe(meta.type.asMap.key.toString()).toHex()),
       documentation: meta.documentation
     });

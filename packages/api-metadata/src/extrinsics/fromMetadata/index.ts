@@ -4,7 +4,7 @@
 
 import { Calls, ModulesWithCalls } from '@plugnet/types/types';
 
-import { ModuleMetadata } from '@plugnet/types/Metadata/v7/Metadata';
+import { ModuleMetadataV7 } from '@plugnet/types/Metadata/v7/Metadata';
 import Metadata from '@plugnet/types/Metadata';
 import { stringCamelCase } from '@plugnet/util';
 
@@ -19,7 +19,7 @@ import createUnchecked from './createUnchecked';
 export default function fromMetadata (metadata: Metadata): ModulesWithCalls {
   return metadata.asLatest.modules
     .filter(({ calls }): boolean => calls.isSome)
-    .reduce((result, modul: ModuleMetadata, sectionIndex): ModulesWithCalls => {
+    .reduce((result, modul: ModuleMetadataV7, sectionIndex): ModulesWithCalls => {
       const section = stringCamelCase(modul.name.toString());
 
       result[section] = modul.calls.unwrap().reduce((newModule, callMetadata, methodIndex): Calls => {
