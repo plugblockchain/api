@@ -3,6 +3,7 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import '../injector';
+import {ClassOfUnsafe, getTypeRegistry} from './create';
 
 import Enum from './Enum';
 import Null from '../primitive/Null';
@@ -250,4 +251,19 @@ describe('Enum', (): void => {
       ).toEqual(JSON.stringify({ _enum: { foo: 'Text', bar: 'u32' } }));
     });
   });
+
+  it.only('ttt', () => {
+    const typeRegistry = getTypeRegistry();
+    const NestedEnum = ClassOfUnsafe('{ "_enum": ["A1", "A2"]}');
+    // const NestedEnum2 = ClassOfUnsafe('{ "_enum": ["B1", "B2"]}');
+    typeRegistry.register({NestedEnum});
+
+    const a1 = new NestedEnum(0);
+    // const b1 = new NestedEnum2(0);
+
+    const E = ClassOfUnsafe('{"_enum": {"A": "NestedEnum"}}');
+    const e = new E(0, 0);
+    const e1 = new E(a1, 0);
+    console.log(e.asA.toString(), e1.asA.toString(), a1.toString());
+  })
 });

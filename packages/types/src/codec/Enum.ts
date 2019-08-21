@@ -11,7 +11,7 @@ import { mapToTypeMap } from './utils';
 import Base from './Base';
 import Struct from './Struct';
 
-interface EnumConstructor<T = Codec> {
+export interface EnumConstructor<T = Codec> {
   new(value?: any, index?: number): T;
 }
 
@@ -74,12 +74,12 @@ export default class Enum extends Base<Codec> {
   }
 
   private static decodeEnum (def: TypesDef, value?: any, index?: number | Enum): Decoded {
-    if (value instanceof Enum) {
-      return Enum.createValue(def, value._index, value.raw);
+    if (isNumber(index)) {
+      return Enum.createValue(def, index, value);
     } else if (index instanceof Enum) {
       return Enum.createValue(def, index._index, index.raw);
-    } else if (isNumber(index)) {
-      return Enum.createValue(def, index, value);
+    } else if (value instanceof Enum) {
+      return Enum.createValue(def, value._index, value.raw);
     }
 
     // Or else, we just look at `value`
