@@ -7,7 +7,7 @@ import { Constructor } from '@plugnet/types/types';
 
 export interface Global extends NodeJS.Global {
   WebSocket: Constructor<WebSocket>;
-  fetch: GlobalFetch;
+  fetch: any;
 }
 
 export interface Mock {
