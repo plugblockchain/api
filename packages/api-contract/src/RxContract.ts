@@ -8,8 +8,7 @@ import { ContractABI, ContractABIFn, InterfaceContract, InterfaceContractCalls }
 
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
-import { ApiRx } from '@plugnet/api';
-import { SubmittableResult } from '@plugnet/api/SubmittableExtrinsic';
+import { ApiRx, SubmittableResult } from '@plugnet/api';
 import { createType } from '@plugnet/types';
 import Abi from './Abi';
 import RxBase from './RxBase';

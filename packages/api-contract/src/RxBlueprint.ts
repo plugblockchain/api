@@ -2,7 +2,7 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { ISubmittableResult, SubmittableResult } from '@plugnet/api/SubmittableExtrinsic';
+import { SubmittableResultImpl } from '@plugnet/api/types';
 import { AccountId, Address, Hash } from '@plugnet/types/interfaces';
 import { IKeyringPair } from '@plugnet/types/types';
 import { ContractABI } from './types';
@@ -10,7 +10,7 @@ import { ContractABI } from './types';
 import BN from 'bn.js';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ApiRx } from '@plugnet/api';
+import { ApiRx, SubmittableResult } from '@plugnet/api';
 import { createType } from '@plugnet/types';
 
 import Abi from './Abi';
@@ -26,7 +26,7 @@ export interface BlueprintCreate {
 class BlueprintCreateResult extends SubmittableResult {
   public readonly contract?: RxContract;
 
-  public constructor (result: ISubmittableResult, contract?: RxContract) {
+  public constructor (result: SubmittableResultImpl, contract?: RxContract) {
     super(result);
 
     this.contract = contract;
