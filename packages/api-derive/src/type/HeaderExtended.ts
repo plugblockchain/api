@@ -8,8 +8,8 @@ import { AnyJsonObject, Constructor } from '@plugnet/types/types';
 import runtimeTypes from '@plugnet/types/interfaces/runtime/definitions';
 import { Struct } from '@plugnet/types';
 
-// @ts-ignore We can ignore the properties, added via Struct.with
-const _Header: Constructor<Header> = Struct.with(runtimeTypes.types.Header);
+// We can ignore the properties, added via Struct.with
+const _Header: Constructor<Header> = Struct.with(runtimeTypes.types.Header as any) as any;
 
 /**
  * @name HeaderExtended
