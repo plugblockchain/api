@@ -9,7 +9,7 @@ require('@babel/register')({
   plugins: [
     ['module-resolver', {
       alias: {
-        '^@plugnet/types(.*)': './packages/types/src\\2'
+        '^@plugnet/types(.*)': './packages/types/src\\1'
       }
     }]
   ]
