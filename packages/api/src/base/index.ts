@@ -5,8 +5,7 @@
 import { RpcInterface } from '@plugnet/rpc-core/jsonrpc.types';
 import { Hash, RuntimeVersion } from '@plugnet/types/interfaces';
 import { CallFunction, RegistryTypes } from '@plugnet/types/types';
-
-import { ApiOptions, ApiTypes, DecoratedRpc, QueryableStorage, QueryableStorageMulti, SignerPayloadRawBase, SubmittableExtrinsics, Signer } from '../types';
+import { ApiOptions, ApiTypes, DecoratedRpc, DecorateMethod, QueryableStorage, QueryableStorageMulti, SignerPayloadRawBase, SubmittableExtrinsics, Signer } from '../types';
 
 import { Constants } from '@plugnet/api-metadata/consts/types';
 import { GenericCall, Metadata, getTypeRegistry } from '@plugnet/types';
@@ -52,8 +51,8 @@ export default abstract class ApiBase<ApiType> extends Init<ApiType> {
    * });
    * ```
    */
-  public constructor (options: ApiOptions = {}, type: ApiTypes) {
-    super(options, type);
+  public constructor (options: ApiOptions = {}, type: ApiTypes, decorateMethod: DecorateMethod) {
+    super(options, type, decorateMethod);
   }
 
   /**

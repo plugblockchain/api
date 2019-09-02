@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/unbound-method */
 /* eslint-disable @typescript-eslint/no-var-requires */
 // Required imports
 const { zip } = require('rxjs');
 const { ApiRx } = require('@plugnet/api');
 const { WsProvider } = require('@plugnet/rpc-provider');
 
-function main () {
+async function main () {
   // Initialise the provider to connect to the local node
   const provider = new WsProvider('ws://127.0.0.1:9944');
 
