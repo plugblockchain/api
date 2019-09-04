@@ -1,6 +1,6 @@
 {
   "name": "@plugnet/rpc-provider",
-  "version": "0.90.100",
+  "version": "0.90.101",
   "description": "Transport providers for the API",
   "main": "index.js",
   "keywords": [
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/plugblockchain/api.js/tree/master/packages/rpc-provider#readme",
   "dependencies": {
     "@babel/runtime": "^7.5.5",
-    "@plugnet/api-metadata": "^0.90.100",
+    "@plugnet/api-metadata": "^0.90.101",
     "@plugnet/util": "^1.1.100",
     "@plugnet/util-crypto": "^1.1.100",
     "@types/nock": "^10.0.3",
