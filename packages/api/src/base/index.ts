@@ -4,8 +4,8 @@
 
 import { RpcInterface } from '@plugnet/rpc-core/jsonrpc.types';
 import { Hash, RuntimeVersion } from '@plugnet/types/interfaces';
-import { CallFunction, RegistryTypes } from '@plugnet/types/types';
-import { ApiOptions, ApiTypes, DecoratedRpc, DecorateMethod, QueryableStorage, QueryableStorageMulti, SignerPayloadRawBase, SubmittableExtrinsics, Signer } from '../types';
+import { CallFunction, RegistryTypes, SignerPayloadRawBase } from '@plugnet/types/types';
+import { ApiOptions, ApiTypes, DecoratedRpc, DecorateMethod, QueryableStorage, QueryableStorageMulti, SubmittableExtrinsics, Signer } from '../types';
 
 import { Constants } from '@plugnet/api-metadata/consts/types';
 import { GenericCall, Metadata, getTypeRegistry } from '@plugnet/types';
