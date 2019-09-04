@@ -2,11 +2,12 @@
 // This software may be modified and distributed under the terms
 // of the Apache-2.0 license. See the LICENSE file for details.
 
-import { Signer, SignerPayload, SignerResult, SignerPayloadRaw } from '@plugnet/api/types';
+import { Signer, SignerResult } from '@plugnet/api/types';
 import { KeyringPair } from '@plugnet/keyring/types';
 
 import { createType } from '@plugnet/types';
 import { hexToU8a, u8aToHex } from '@plugnet/util';
+import { SignerPayloadJSON, SignerPayloadRaw } from '@plugnet/types/types';
 
 let id = 0;
 
@@ -20,7 +21,7 @@ export class SingleAccountSigner implements Signer {
     this.signDelay = signDelay;
   }
 
-  public async signPayload (payload: SignerPayload): Promise<SignerResult> {
+  public async signPayload (payload: SignerPayloadJSON): Promise<SignerResult> {
     if (payload.address !== this.keyringPair.address) {
       throw new Error('does not have the keyringPair');
     }
