@@ -12,6 +12,7 @@ import U8a from './codec/U8a';
 import { InterfaceRegistry } from './interfaceRegistry';
 import Call from './primitive/Generic/Call';
 import Address from './primitive/Generic/Address';
+import Doughnut from './primitive/Doughnut';
 
 export * from './codec/types';
 
@@ -144,6 +145,7 @@ export interface RuntimeVersionInterface {
 }
 
 export interface SignatureOptions {
+  doughnut?: AnyU8a | Doughnut;
   blockHash: AnyU8a;
   era?: IExtrinsicEra;
   genesisHash: AnyU8a;
@@ -175,6 +177,7 @@ interface ExtrinsicSignatureBase {
 }
 
 export interface ExtrinsicPayloadValue {
+  doughnut?: AnyU8a | Doughnut;
   blockHash: AnyU8a;
   era: AnyU8a | IExtrinsicEra;
   genesisHash: AnyU8a;
@@ -222,6 +225,11 @@ export interface SignerPayloadJSON {
    * @description The ss-58 encoded address
    */
   address: string;
+
+  /**
+   * @description Doughnut encoded
+   */
+  doughnut?: string;
 
   /**
    * @description The checkpoint hash of the block, in hex

@@ -8,10 +8,13 @@ import { ExtrinsicPayloadValue, IKeyringPair, InterfaceTypes } from '../../../ty
 import Compact from '../../../codec/Compact';
 import Struct from '../../../codec/Struct';
 import Bytes from '../../../primitive/Bytes';
+import Doughnut from '../../../primitive/Doughnut';
 import { sign } from '../util';
 
 // SignedExtra adds the following fields to the payload
 const SignedExtraV2: Record<string, InterfaceTypes> = {
+  //Option<<Runtime as system::Trait>::Doughnut>,
+  doughnut: 'Doughnut',
   // system::CheckEra<Runtime>
   blockHash: 'Hash'
   // system::CheckNonce<Runtime>
@@ -34,6 +37,13 @@ export default class ExtrinsicPayloadV2 extends Struct {
       tip: 'Compact<Balance>',
       ...SignedExtraV2
     }, value);
+  }
+
+  /**
+   * @description Doughnut [[Doughnut]] attached permission proof.
+   */
+  public get doughnut (): Doughnut {
+    return this.get('doughnut') as Doughnut;
   }
 
   /**

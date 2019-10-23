@@ -6,12 +6,15 @@ import { u8aToHex } from '@plugnet/util';
 import { Address, Balance, BlockNumber, Call, ExtrinsicEra, Hash, Index, RuntimeVersion } from '../../interfaces';
 import Compact from '../../codec/Compact';
 import Struct from '../../codec/Struct';
+import Option from '../../codec/Option';
 import { createType } from '../../codec';
 import { Codec, Constructor, ISignerPayload, SignerPayloadJSON, SignerPayloadRaw } from '../../types';
 import u8 from '../U8';
+import Doughnut from '../Doughnut';
 
 export interface SignerPayloadType extends Codec {
   address: Address;
+  doughnut?: Option<Doughnut>;
   blockHash: Hash;
   blockNumber: BlockNumber;
   era: ExtrinsicEra;
@@ -27,6 +30,7 @@ export interface SignerPayloadType extends Codec {
 // We can ignore the properties, added via Struct.with
 const _Payload: Constructor<SignerPayloadType> = Struct.with({
   address: 'Address',
+  doughnut: Option.with(Doughnut),
   blockHash: 'Hash',
   blockNumber: 'BlockNumber',
   era: 'ExtrinsicEra',
@@ -43,9 +47,9 @@ export default class SignerPayload extends _Payload implements ISignerPayload {
    * @description Creates an representation of the structure as an ISignerPayload JSON
    */
   public toPayload (): SignerPayloadJSON {
-    const { address, blockHash, blockNumber, era, genesisHash, method, nonce, runtimeVersion: { specVersion }, tip, version } = this;
+    const { address, doughnut, blockHash, blockNumber, era, genesisHash, method, nonce, runtimeVersion: { specVersion }, tip, version } = this;
 
-    return {
+    const ret: SignerPayloadJSON = {
       address: address.toString(),
       blockHash: blockHash.toHex(),
       blockNumber: blockNumber.toHex(),
@@ -57,6 +61,10 @@ export default class SignerPayload extends _Payload implements ISignerPayload {
       tip: tip.toHex(),
       version: version.toNumber()
     };
+    if (doughnut.isSome) {
+      ret.doughnut = doughnut.unwrap().toHex();
+    }
+    return ret;
   }
 
   /**

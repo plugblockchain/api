@@ -242,6 +242,7 @@ export default class Extrinsic extends Base<ExtrinsicVx | ExtrinsicUnknown> impl
     // FIXME The old support as detailed above... needs to be dropped
     if ((args as any[]).length === 2) {
       payload = {
+        doughnut: new Uint8Array(),
         blockHash: new Uint8Array(),
         era: (args as any[])[1] as string,
         genesisHash: new Uint8Array(),
