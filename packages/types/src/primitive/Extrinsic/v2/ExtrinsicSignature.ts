@@ -115,7 +115,7 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
   /**
    * @description Generate a payload and pplies the signature from a keypair
    */
-  public sign (method: Call, account: IKeyringPair, { blockHash, era, genesisHash, nonce, tip }: SignatureOptions): IExtrinsicSignature {
+  public sign (method: Call, account: IKeyringPair, { doughnut, blockHash, era, genesisHash, nonce, tip }: SignatureOptions): IExtrinsicSignature {
     const signer = createType('Address', account.publicKey);
     const payload = new ExtrinsicPayloadV2({
       blockHash,
@@ -126,6 +126,9 @@ export default class ExtrinsicSignatureV2 extends Struct implements IExtrinsicSi
       specVersion: 0, // unused for v2
       tip: tip || 0
     });
+    if (doughnut.isSome) {
+      payload.doughnut = doughnut;
+    }
     const signature = createType('Signature', payload.sign(account));
 
     return this.injectSignature(signer, signature, payload);

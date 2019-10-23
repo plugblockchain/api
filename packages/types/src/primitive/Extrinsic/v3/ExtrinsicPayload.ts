@@ -9,10 +9,13 @@ import Compact from '../../../codec/Compact';
 import Struct from '../../../codec/Struct';
 import Bytes from '../../../primitive/Bytes';
 import u32 from '../../../primitive/U32';
+import Doughnut from '../../../primitive/Doughnut';
 import { sign } from '../util';
 
 // SignedExtra adds the following fields to the payload
 const SignedExtraV3: Record<string, InterfaceTypes> = {
+  //Option<<Runtime as system::Trait>::Doughnut>,
+  doughnut: 'Doughnut',
   // system::CheckVersion<Runtime>
   specVersion: 'u32',
   // system::CheckGenesis<Runtime>
@@ -39,6 +42,13 @@ export default class ExtrinsicPayloadV3 extends Struct {
       tip: 'Compact<Balance>',
       ...SignedExtraV3
     }, value);
+  }
+
+  /**
+   * @description Doughnut [[Doughnut]] attached permission proof.
+   */
+  public get doughnut (): Doughnut {
+    return this.get('doughnut') as Doughnut;
   }
 
   /**
